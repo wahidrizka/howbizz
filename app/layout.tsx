@@ -5,7 +5,7 @@ export const metadata: Metadata = {
 	title: "Howbizz",
 	description: "Bootstrap your early professional career.",
 	icons: {
-		icon: "/images/favicon.ico",
+		icon: "/images/favicon.png",
 	},
 };
 
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body>{children}</body>
+			<body className="antialiased font-neue-montreal">{children}</body>
 		</html>
 	);
 }

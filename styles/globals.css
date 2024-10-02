@@ -1,7 +1,11 @@
+@import url(./fonts.css);
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer utilities {
-  
+  .font-neue-montreal {
+    font-family: "Neue Montreal", sans-serif;
+  }
 }

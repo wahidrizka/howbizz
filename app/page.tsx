@@ -1,7 +1,9 @@
+import { Header } from "@/components";
+
 export default function Home() {
 	return (
-		<div>
-			<h1>Coming soon</h1>
+		<div className="bg-white min-h-screen">
+			<Header />
 		</div>
 	);
 }
