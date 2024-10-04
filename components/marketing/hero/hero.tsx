@@ -25,7 +25,7 @@ export const Hero = () => {
 				>
 					<h1
 						className={clsx(
-							"max-w-2xl text-3xl font-bold -tracking-tight text-slate-900 sm:text-5xl lg:col-span-2 xl:col-auto"
+							"max-w-2xl text-3xl font-bold text-slate-900 sm:text-5xl lg:col-span-2 xl:col-auto"
 						)}
 					>
 						Bootstrap your early professional career!
