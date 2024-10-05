@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export const LogoClouds = ({ data }: { data: PartnerTypes[] }) => {
 	return (
-		<div className={clsx("bg-white py-24 sm:px-32")}>
+		<section id="#partners" className={clsx("bg-white py-24 sm:px-32")}>
 			<div className={clsx("mx-auto max-w-7xl px-6 lg:px-8")}>
 				<div
 					className={clsx(
@@ -56,6 +56,6 @@ export const LogoClouds = ({ data }: { data: PartnerTypes[] }) => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 };
