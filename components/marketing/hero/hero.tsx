@@ -5,7 +5,8 @@ import Image from "next/image";
 
 export const Hero = () => {
 	return (
-		<div
+		<section
+			id="#hero"
 			className={clsx(
 				"relative isolate overflow-hidden bg-gradient-to-b from-amber-100/20 pt-14"
 			)}
@@ -65,6 +66,6 @@ export const Hero = () => {
 					/>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 };
