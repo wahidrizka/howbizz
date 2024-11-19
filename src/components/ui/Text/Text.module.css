@@ -1,0 +1,815 @@
+.size--10 {
+  font-size: 0.625rem;
+  line-height: 0.75rem;
+  letter-spacing: initial;
+  font-weight: 400;
+}
+.size--12 {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: initial;
+  font-weight: 400;
+}
+.size--14 {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: initial;
+  font-weight: 400;
+}
+.size--16 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: initial;
+  font-weight: 400;
+}
+.size--20 {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  letter-spacing: -0.020625rem;
+  font-weight: 600;
+}
+.size--24 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: -0.029375rem;
+  font-weight: 600;
+}
+.size--32 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  letter-spacing: -0.049375rem;
+  font-weight: 600;
+}
+.size--48 {
+  font-size: 3rem;
+  line-height: 3.5rem;
+  letter-spacing: -0.066875rem;
+  font-weight: 700;
+}
+
+.variant--copy-13 {
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  letter-spacing: 0px;
+  font-weight: 400;
+}
+.variant--copy-14 {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: 0px;
+  font-weight: 400;
+}
+.variant--copy-16 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 0px;
+  font-weight: 400;
+}
+.variant--copy-18 {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  letter-spacing: 0px;
+  font-weight: 400;
+}
+.variant--copy-20 {
+  font-size: 1.25rem;
+  line-height: 2.25rem;
+  letter-spacing: 0px;
+  font-weight: 400;
+}
+.variant--copy-24 {
+  font-size: 1.5rem;
+  line-height: 2.25rem;
+  letter-spacing: 0px;
+  font-weight: 400;
+}
+.variant--label-12 {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0px;
+  font-weight: 400;
+}
+.variant--label-13 {
+  font-size: 0.8125rem;
+  line-height: 1rem;
+  letter-spacing: 0px;
+  font-weight: 400;
+}
+.variant--label-14 {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: 0px;
+  font-weight: 400;
+}
+.variant--label-16 {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  letter-spacing: 0px;
+  font-weight: 400;
+}
+.variant--label-18 {
+  font-size: 1.125rem;
+  line-height: 1.25rem;
+  letter-spacing: 0px;
+  font-weight: 400;
+}
+.variant--label-20 {
+  font-size: 1.25rem;
+  line-height: 2rem;
+  letter-spacing: 0px;
+  font-weight: 400;
+}
+.variant--button-12 {
+  font-size: 0.75rem;
+  line-height: 1rem;
+  letter-spacing: 0px;
+  font-weight: 500;
+}
+.variant--button-14 {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  letter-spacing: 0px;
+  font-weight: 500;
+}
+.variant--button-16 {
+  font-size: 1rem;
+  line-height: 1.25rem;
+  letter-spacing: 0px;
+  font-weight: 500;
+}
+.variant--heading-16 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: -0.32px;
+  font-weight: 600;
+}
+.variant--heading-20 {
+  font-size: 1.25rem;
+  line-height: 1.625rem;
+  letter-spacing: -0.4px;
+  font-weight: 600;
+}
+.variant--heading-24 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: -0.96px;
+  font-weight: 600;
+}
+.variant--heading-32 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+  letter-spacing: -1.28px;
+  font-weight: 600;
+}
+.variant--heading-40 {
+  font-size: 2.5rem;
+  line-height: 3rem;
+  letter-spacing: -2.4px;
+  font-weight: 600;
+}
+.variant--heading-48 {
+  font-size: 3rem;
+  line-height: 3.5rem;
+  letter-spacing: -2.88px;
+  font-weight: 600;
+}
+.variant--heading-56 {
+  font-size: 3.5rem;
+  line-height: 3.5rem;
+  letter-spacing: -3.36px;
+  font-weight: 600;
+}
+.variant--heading-64 {
+  font-size: 4rem;
+  line-height: 4rem;
+  letter-spacing: -3.84px;
+  font-weight: 600;
+}
+.variant--heading-72 {
+  font-size: 4.5rem;
+  line-height: 4.5rem;
+  letter-spacing: -4.32px;
+  font-weight: 600;
+}
+
+.transform--uppercase {
+  text-transform: uppercase;
+}
+.transform--capitalize {
+  text-transform: capitalize;
+}
+.transform--lowercase {
+  text-transform: lowercase;
+}
+
+.truncate {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  max-width: 100%;
+  min-width: 0;
+}
+
+.align--center {
+  text-align: center;
+}
+.align--left {
+  text-align: left;
+}
+.align--right {
+  text-align: right;
+}
+
+.monospace {
+  font-family: var(--font-mono);
+}
+
+@media (min-width: 0px) {
+  .size--sm-10 {
+    font-size: 0.625rem;
+    line-height: 0.75rem;
+    letter-spacing: initial;
+    font-weight: 400;
+  }
+  .size--sm-12 {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    letter-spacing: initial;
+    font-weight: 400;
+  }
+  .size--sm-14 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: initial;
+    font-weight: 400;
+  }
+  .size--sm-16 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: initial;
+    font-weight: 400;
+  }
+  .size--sm-20 {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.020625rem;
+    font-weight: 600;
+  }
+  .size--sm-24 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    letter-spacing: -0.029375rem;
+    font-weight: 600;
+  }
+  .size--sm-32 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    letter-spacing: -0.049375rem;
+    font-weight: 600;
+  }
+  .size--sm-48 {
+    font-size: 3rem;
+    line-height: 3.5rem;
+    letter-spacing: -0.066875rem;
+    font-weight: 700;
+  }
+
+  .variant--sm-copy-13 {
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--sm-copy-14 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--sm-copy-16 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--sm-copy-18 {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--sm-copy-20 {
+    font-size: 1.25rem;
+    line-height: 2.25rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--sm-copy-24 {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--sm-label-12 {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--sm-label-13 {
+    font-size: 0.8125rem;
+    line-height: 1rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--sm-label-14 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--sm-label-16 {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--sm-label-18 {
+    font-size: 1.125rem;
+    line-height: 1.25rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--sm-label-20 {
+    font-size: 1.25rem;
+    line-height: 2rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--sm-button-12 {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    letter-spacing: 0px;
+    font-weight: 500;
+  }
+  .variant--sm-button-14 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 0px;
+    font-weight: 500;
+  }
+  .variant--sm-button-16 {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    letter-spacing: 0px;
+    font-weight: 500;
+  }
+  .variant--sm-heading-16 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.32px;
+    font-weight: 600;
+  }
+  .variant--sm-heading-20 {
+    font-size: 1.25rem;
+    line-height: 1.625rem;
+    letter-spacing: -0.4px;
+    font-weight: 600;
+  }
+  .variant--sm-heading-24 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    letter-spacing: -0.96px;
+    font-weight: 600;
+  }
+  .variant--sm-heading-32 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    letter-spacing: -1.28px;
+    font-weight: 600;
+  }
+  .variant--sm-heading-40 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    letter-spacing: -2.4px;
+    font-weight: 600;
+  }
+  .variant--sm-heading-48 {
+    font-size: 3rem;
+    line-height: 3.5rem;
+    letter-spacing: -2.88px;
+    font-weight: 600;
+  }
+  .variant--sm-heading-56 {
+    font-size: 3.5rem;
+    line-height: 3.5rem;
+    letter-spacing: -3.36px;
+    font-weight: 600;
+  }
+  .variant--sm-heading-64 {
+    font-size: 4rem;
+    line-height: 4rem;
+    letter-spacing: -3.84px;
+    font-weight: 600;
+  }
+  .variant--sm-heading-72 {
+    font-size: 4.5rem;
+    line-height: 4.5rem;
+    letter-spacing: -4.32px;
+    font-weight: 600;
+  }
+}
+
+@media (min-width: 601px) {
+  .size--md-10 {
+    font-size: 0.625rem;
+    line-height: 0.75rem;
+    letter-spacing: initial;
+    font-weight: 400;
+  }
+  .size--md-12 {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    letter-spacing: initial;
+    font-weight: 400;
+  }
+  .size--md-14 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: initial;
+    font-weight: 400;
+  }
+  .size--md-16 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: initial;
+    font-weight: 400;
+  }
+  .size--md-20 {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.020625rem;
+    font-weight: 600;
+  }
+  .size--md-24 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    letter-spacing: -0.029375rem;
+    font-weight: 600;
+  }
+  .size--md-32 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    letter-spacing: -0.049375rem;
+    font-weight: 600;
+  }
+  .size--md-48 {
+    font-size: 3rem;
+    line-height: 3.5rem;
+    letter-spacing: -0.066875rem;
+    font-weight: 700;
+  }
+
+  .variant--md-copy-13 {
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--md-copy-14 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--md-copy-16 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--md-copy-18 {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--md-copy-20 {
+    font-size: 1.25rem;
+    line-height: 2.25rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--md-copy-24 {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--md-label-12 {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--md-label-13 {
+    font-size: 0.8125rem;
+    line-height: 1rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--md-label-14 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--md-label-16 {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--md-label-18 {
+    font-size: 1.125rem;
+    line-height: 1.25rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--md-label-20 {
+    font-size: 1.25rem;
+    line-height: 2rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--md-button-12 {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    letter-spacing: 0px;
+    font-weight: 500;
+  }
+  .variant--md-button-14 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 0px;
+    font-weight: 500;
+  }
+  .variant--md-button-16 {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    letter-spacing: 0px;
+    font-weight: 500;
+  }
+  .variant--md-heading-16 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.32px;
+    font-weight: 600;
+  }
+  .variant--md-heading-20 {
+    font-size: 1.25rem;
+    line-height: 1.625rem;
+    letter-spacing: -0.4px;
+    font-weight: 600;
+  }
+  .variant--md-heading-24 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    letter-spacing: -0.96px;
+    font-weight: 600;
+  }
+  .variant--md-heading-32 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    letter-spacing: -1.28px;
+    font-weight: 600;
+  }
+  .variant--md-heading-40 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    letter-spacing: -2.4px;
+    font-weight: 600;
+  }
+  .variant--md-heading-48 {
+    font-size: 3rem;
+    line-height: 3.5rem;
+    letter-spacing: -2.88px;
+    font-weight: 600;
+  }
+  .variant--md-heading-56 {
+    font-size: 3.5rem;
+    line-height: 3.5rem;
+    letter-spacing: -3.36px;
+    font-weight: 600;
+  }
+  .variant--md-heading-64 {
+    font-size: 4rem;
+    line-height: 4rem;
+    letter-spacing: -3.84px;
+    font-weight: 600;
+  }
+  .variant--md-heading-72 {
+    font-size: 4.5rem;
+    line-height: 4.5rem;
+    letter-spacing: -4.32px;
+    font-weight: 600;
+  }
+}
+
+@media (min-width: 961px) {
+  .size--lg-10 {
+    font-size: 0.625rem;
+    line-height: 0.75rem;
+    letter-spacing: initial;
+    font-weight: 400;
+  }
+  .size--lg-12 {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    letter-spacing: initial;
+    font-weight: 400;
+  }
+  .size--lg-14 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: initial;
+    font-weight: 400;
+  }
+  .size--lg-16 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: initial;
+    font-weight: 400;
+  }
+  .size--lg-20 {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.020625rem;
+    font-weight: 600;
+  }
+  .size--lg-24 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    letter-spacing: -0.029375rem;
+    font-weight: 600;
+  }
+  .size--lg-32 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    letter-spacing: -0.049375rem;
+    font-weight: 600;
+  }
+  .size--lg-48 {
+    font-size: 3rem;
+    line-height: 3.5rem;
+    letter-spacing: -0.066875rem;
+    font-weight: 700;
+  }
+
+  .variant--lg-copy-13 {
+    font-size: 0.8125rem;
+    line-height: 1.125rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--lg-copy-14 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--lg-copy-16 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--lg-copy-18 {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--lg-copy-20 {
+    font-size: 1.25rem;
+    line-height: 2.25rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--lg-copy-24 {
+    font-size: 1.5rem;
+    line-height: 2.25rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--lg-label-12 {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--lg-label-13 {
+    font-size: 0.8125rem;
+    line-height: 1rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--lg-label-14 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--lg-label-16 {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--lg-label-18 {
+    font-size: 1.125rem;
+    line-height: 1.25rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--lg-label-20 {
+    font-size: 1.25rem;
+    line-height: 2rem;
+    letter-spacing: 0px;
+    font-weight: 400;
+  }
+  .variant--lg-button-12 {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    letter-spacing: 0px;
+    font-weight: 500;
+  }
+  .variant--lg-button-14 {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    letter-spacing: 0px;
+    font-weight: 500;
+  }
+  .variant--lg-button-16 {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    letter-spacing: 0px;
+    font-weight: 500;
+  }
+  .variant--lg-heading-16 {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: -0.32px;
+    font-weight: 600;
+  }
+  .variant--lg-heading-20 {
+    font-size: 1.25rem;
+    line-height: 1.625rem;
+    letter-spacing: -0.4px;
+    font-weight: 600;
+  }
+  .variant--lg-heading-24 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    letter-spacing: -0.96px;
+    font-weight: 600;
+  }
+  .variant--lg-heading-32 {
+    font-size: 2rem;
+    line-height: 2.5rem;
+    letter-spacing: -1.28px;
+    font-weight: 600;
+  }
+  .variant--lg-heading-40 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+    letter-spacing: -2.4px;
+    font-weight: 600;
+  }
+  .variant--lg-heading-48 {
+    font-size: 3rem;
+    line-height: 3.5rem;
+    letter-spacing: -2.88px;
+    font-weight: 600;
+  }
+  .variant--lg-heading-56 {
+    font-size: 3.5rem;
+    line-height: 3.5rem;
+    letter-spacing: -3.36px;
+    font-weight: 600;
+  }
+  .variant--lg-heading-64 {
+    font-size: 4rem;
+    line-height: 4rem;
+    letter-spacing: -3.84px;
+    font-weight: 600;
+  }
+  .variant--lg-heading-72 {
+    font-size: 4.5rem;
+    line-height: 4.5rem;
+    letter-spacing: -4.32px;
+    font-weight: 600;
+  }
+}
