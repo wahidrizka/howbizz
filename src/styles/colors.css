@@ -97,6 +97,15 @@
   --vaul-overlay-background: 255, 255, 255;
   --vaul-overlay-background-start: transparent;
   --vaul-overlay-background-end: rgba(0, 0, 0, .4);
+
+  --accents-1: #fafafa;
+  --accents-2: #eaeaea;
+  --accents-3: #999;
+  --accents-4: #888;
+  --accents-5: #666;
+  --accents-6: #444;
+  --accents-7: #333;
+  --accents-8: #111;
 }
 
 :root {
