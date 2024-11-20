@@ -34,7 +34,7 @@
   color: var(--themed-fg, var(--ds-background-100));
   background: var(--themed-bg, var(--ds-gray-1000)) none;
   font-weight: 500;
-  padding: 0 12px;
+  padding: 0 var(--geist-gap-half);
   box-shadow: 0 0 0 1px var(--themed-border, transparent);
   max-width: 100%;
   justify-content: center;
@@ -42,14 +42,14 @@
   transition-property: border-color, background, color, transform, box-shadow;
   transition-duration: .15s;
   transition-timing-function: ease;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  height: 40px;
+  font-size: var(--geist-form-font);
+  line-height: var(--geist-form-line-height);
+  height: var(--geist-form-height);
 }
 
 .shape[data-button] {
   padding: 0;
-  width: 40px;
+  width: var(--geist-form-height);
 }
 .button svg {
   flex-shrink: 0;
@@ -61,7 +61,7 @@
   border-radius: 4px;
 }
 .small[data-button] {
-  font-size: 0.875rem;
+  font-size: var(--geist-form-small-font);
   height: 32px;
   --spinner-size: 15px;
 }
@@ -71,12 +71,12 @@
   font-size: 14px;
 }
 .small.shape[data-button] {
-  width: 32px;
+  width: var(--geist-form-small-height);
 }
 .large[data-button] {
-  font-size: 0.875rem;
-  height: 48px;
-  line-height: 1.5rem;
+  height: var(--geist-form-large-height);
+  font-size: var(--geist-form-large-font);
+  line-height: var(--geist-form-large-line-height);
   border-radius: 8px;
 }
 .button.large {
@@ -85,7 +85,7 @@
   font-size: 16px;
 }
 .large.shape[data-button] {
-  width: 48px;
+  width: var(--geist-form-large-height);
 }
 .circle[data-button] {
   border-radius: 100% !important;
@@ -108,7 +108,7 @@
   color: var(--themed-fg);
 }
 .secondary[data-button].shadow[data-button] {
-  box-shadow: 0 0 0 1px rgba(0,0,0,.08), 0px 2px 2px rgba(0,0,0,.04);
+  box-shadow: var(--ds-shadow-border-small);
 }
 .tertiary[data-button] {
   background: none;

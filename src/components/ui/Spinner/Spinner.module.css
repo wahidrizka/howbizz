@@ -16,7 +16,7 @@
 .bar {
   animation: spin 1.2s linear infinite;
   background: var(--spinner-color, var(--ds-gray-700));
-  border-radius: 5px;
+  border-radius: var(--geist-radius);
   height: 8%;
   left: -10%;
   position: absolute;
