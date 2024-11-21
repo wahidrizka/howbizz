@@ -1,6 +1,7 @@
 "use client";
 import clsx from "clsx";
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useCallback } from "react";
+import Link, { LinkProps } from "next/link";
 import styles from "./Button.module.css";
 import { Spinner } from "../Spinner";
 
@@ -13,7 +14,8 @@ export const ButtonTypes = [
 ] as const;
 export const ButtonShapes = ["square", "circle", "rounded"] as const;
 
-export type ButtonBaseProps = {
+type ButtonBaseProps = {
+	as?: "button" | "link";
 	size?: (typeof ButtonSizes)[number];
 	type?: (typeof ButtonTypes)[number];
 	shape?: (typeof ButtonShapes)[number];
@@ -23,24 +25,41 @@ export type ButtonBaseProps = {
 	shadow?: boolean;
 	loading?: boolean;
 	disabled?: boolean;
-} & React.HTMLAttributes<HTMLButtonElement>;
+	className?: string;
+	style?: React.CSSProperties;
+	children?: React.ReactNode;
+};
 
-export const Button: React.FC<ButtonBaseProps> = ({
-	size,
-	type,
-	shape,
-	svgOnly = false,
-	leadingVisual,
-	trailingVisual,
-	shadow = false,
-	loading = false,
-	disabled = false,
-	className,
-	children,
-	style,
-	...props
-}) => {
+// Props tambahan untuk elemen `button`
+type ButtonProps = ButtonBaseProps &
+	React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+// Props tambahan untuk elemen `Link`
+type LinkButtonProps = ButtonBaseProps &
+	Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "href"> &
+	LinkProps;
+
+export type Props = ButtonProps | LinkButtonProps;
+
+export const Button: React.FC<Props> = (props) => {
 	const [isHovered, setIsHovered] = useState(false);
+
+	const {
+		as = "button",
+		size,
+		type,
+		shape,
+		svgOnly = false,
+		leadingVisual,
+		trailingVisual,
+		shadow = false,
+		loading = false,
+		disabled = false,
+		className,
+		children,
+		style,
+		...rest
+	} = props;
 
 	const spinnerSize = size === "large" ? 24 : 16;
 
@@ -68,6 +87,43 @@ export const Button: React.FC<ButtonBaseProps> = ({
 	const handleMouseEnter = useCallback(() => setIsHovered(true), []);
 	const handleMouseLeave = useCallback(() => setIsHovered(false), []);
 
+	// Jika `as` adalah "link", gunakan `Link`
+	if (as === "link" && "href" in props) {
+		const { ...linkRest } = rest as LinkButtonProps;
+
+		return (
+			<Link
+				{...linkRest}
+				className={buttonClasses}
+				style={style}
+				onMouseEnter={handleMouseEnter}
+				onMouseLeave={handleMouseLeave}
+				data-button
+				data-prefix={!!leadingVisual || loading}
+				data-suffix={!!trailingVisual}
+				data-hover={isHovered}
+				disabled={disabled}
+				{...linkRest}
+			>
+				{loading && (
+					<div className={styles.prefix}>
+						<Spinner size={spinnerSize} />
+					</div>
+				)}
+				{leadingVisual && (
+					<span className={styles.prefix}>{leadingVisual}</span>
+				)}
+				<span className={clsx(styles.content, svgOnly && styles.flex)}>
+					{children}
+				</span>
+				{trailingVisual && (
+					<span className={styles.suffix}>{trailingVisual}</span>
+				)}
+			</Link>
+		);
+	}
+
+	// Jika `as` adalah "button", gunakan elemen `<button>`
 	return (
 		<button
 			type="button"
@@ -81,7 +137,7 @@ export const Button: React.FC<ButtonBaseProps> = ({
 			data-hover={isHovered}
 			disabled={disabled}
 			style={style}
-			{...props}
+			{...(rest as React.ButtonHTMLAttributes<HTMLButtonElement>)}
 		>
 			{loading && (
 				<div className={styles.prefix}>

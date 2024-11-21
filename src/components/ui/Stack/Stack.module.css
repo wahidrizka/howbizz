@@ -105,6 +105,9 @@
 .gap-8 {
   --stack-gap: 2rem;
 }
+.gap-9 {
+  --stack-gap: 2.25rem;
+}
 .gap-10 {
   --stack-gap: 2.5rem;
 }
@@ -298,6 +301,9 @@
   }
   .gap-sm-8 {
     --stack-gap: 2rem;
+  }
+  .gap-sm-9 {
+    --stack-gap: 2.25rem;
   }
   .gap-sm-10 {
     --stack-gap: 2.5rem;
@@ -494,6 +500,9 @@
   .gap-md-8 {
     --stack-gap: 2rem;
   }
+  .gap-md-9 {
+    --stack-gap: 2.25rem;
+  }
   .gap-md-10 {
     --stack-gap: 2.5rem;
   }
@@ -689,6 +698,9 @@
   .gap-lg-8 {
     --stack-gap: 2rem;
   }
+  .gap-lg-9 {
+    --stack-gap: 2.25rem;
+  }
   .gap-lg-10 {
     --stack-gap: 2.5rem;
   }
@@ -883,6 +895,9 @@
   }
   .gap-xl-8 {
     --stack-gap: 2rem;
+  }
+  .gap-xl-9 {
+    --stack-gap: 2.25rem;
   }
   .gap-xl-10 {
     --stack-gap: 2.5rem;

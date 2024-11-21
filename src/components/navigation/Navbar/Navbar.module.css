@@ -44,3 +44,72 @@
   --gap-between-logo-and-nav: 32px;
   position: relative;
 }
+@media screen and (max-width: 1150px) {
+  .main {
+    display: none;
+    visibility: none;
+  }
+}
+
+@media(max-width: 1150px) {
+  .navbar-content {
+    display: none;
+  }
+}
+
+.right-sectionContent {
+  opacity: 0;
+}
+.right-sectionLoaded {
+  animation: right-section-fadeIn .5s forwards;
+}
+
+@keyframes right-section-fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.right-section-nonPrimaryContent {
+  flex-direction: inherit;
+  align-items: inherit;
+  gap: inherit;
+  transition: all .3s ease-in-out;
+}
+
+.morphing-button-linkMorphing {
+  display: grid;
+  place-items: center;
+  --width-duration: 400ms;
+}
+.morphing-button-linkMorphing>* {
+  grid-area: 1 / 1;
+}
+.morphing-button-linkGhostCta {
+  opacity: 0;
+  position: absolute !important;
+}
+.morphing-button-linkDisplayCta {
+  transition-property: border-color, background, color, transform, box-shadow, width !important;
+  transition-duration: .3s, .3s, .3s, .3s, .3s, var(--width-duration) !important;
+  transition-timing-function: cubic-bezier(.39,.18,.17,.99) !important;
+}
+.morphing-button-linkDisplayCta [data-display-children] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(.14, .55, .3, .92);
+}
+
+@media (min-width: 1151px) {
+  .mobile-menu-toggle {
+    display: none;
+  }
+}
+.mobile-menuRoot {
+  z-index: 9999;
+}
