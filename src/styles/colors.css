@@ -1,5 +1,8 @@
 /* Light mode */
-.dark .invert-theme, .dark-theme .invert-theme, :host, :root {
+/* .dark .invert-theme, 
+.dark-theme .invert-theme, 
+:host,  */
+:root {
   --ds-gray-100-value: 0, 0%, 95%;
   --ds-gray-200-value: 0, 0%, 92%;
   --ds-gray-300-value: 0, 0%, 90%;
@@ -100,7 +103,11 @@
   --vaul-overlay-background-end: rgba(0, 0, 0, .4);
 }
 
-.dark .invert-theme, .dark-theme .invert-theme, .geist-disabled .geist-disabled-skip, :host, :root {
+/* .dark .invert-theme, 
+.dark-theme .invert-theme, 
+.geist-disabled .geist-disabled-skip, 
+:host,  */
+:root {
   --geist-success-lighter: #d3e5ff;
   --geist-success-light: #3291ff;
   --geist-success: #0070f3;
@@ -186,7 +193,10 @@
 }
 
 /* Dark mode */
-.dark, .dark-theme, .invert-theme {
+/* .dark, 
+.dark-theme, 
+.invert-theme, */
+html.dark {
   --ds-gray-100-value: 0, 0%, 10%;
   --ds-gray-200-value: 0, 0%, 12%;
   --ds-gray-300-value: 0, 0%, 16%;
@@ -284,7 +294,13 @@
   --ds-shadow-border-inset: inset 0 0 0 1px hsla(0, 0%, 100%, .1);
 }
 
-.dark, .dark-theme, .dark-theme .geist-disabled .geist-disabled-skip, .invert-theme {
+/* .dark, 
+.dark-theme, 
+.dark-theme 
+.geist-disabled 
+.geist-disabled-skip, 
+.invert-theme, */
+html.dark {
   --geist-foreground: #fff;
   --geist-background: #000;
   --accents-8: #fafafa;
@@ -346,7 +362,11 @@
 }
 
 /* Color mode Dark/Light */
-.dark, .dark-theme, .invert-theme, :host, :root {
+/* .dark, 
+.dark-theme, 
+.invert-theme, 
+:host,  */
+:root {
   --ds-gray-100: hsla(var(--ds-gray-100-value), 1);
   --ds-gray-200: hsla(var(--ds-gray-200-value), 1);
   --ds-gray-300: hsla(var(--ds-gray-300-value), 1);
@@ -428,8 +448,6 @@
   --ds-pink-900: hsla(var(--ds-pink-900-value), 1);
   --ds-pink-1000: hsla(var(--ds-pink-1000-value), 1);
 }
-
-
 
 .gray-100 {
   color: var(--ds-gray-100);

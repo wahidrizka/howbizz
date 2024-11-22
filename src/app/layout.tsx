@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { Navbar } from "@/components";
+import { Navbar, ThemeProvider } from "@/components";
+import clsx from "clsx";
+import { useTheme } from "next-themes";
 
 export const metadata: Metadata = {
 	title: "Howbizz",
@@ -19,10 +21,16 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" className="font-sans antialiased">
+		<html
+			lang="en"
+			className={clsx("font-sans antialiased")}
+			suppressHydrationWarning
+		>
 			<body>
-				<Navbar></Navbar>
-				{children}
+				<ThemeProvider attribute="class" enableSystem={true}>
+					<Navbar></Navbar>
+					<div>{children}</div>
+				</ThemeProvider>
 			</body>
 		</html>
 	);

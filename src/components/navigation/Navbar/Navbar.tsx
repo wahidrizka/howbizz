@@ -4,10 +4,14 @@ import styles from "./Navbar.module.css";
 import clsx from "clsx";
 import { Logo } from "../Logo";
 import { NavigationMenu } from "../NavigationMenu";
-import { Button, Stack } from "@/components";
+import { Button, MobileMenu, Stack } from "@/components";
+import { useTheme } from "next-themes";
 
 export const Navbar: React.FC = () => {
+	const { theme, systemTheme } = useTheme();
 	const [hasScrolled, setHasScrolled] = React.useState<boolean>(false);
+
+	const activeTheme = theme === "system" ? systemTheme : theme;
 
 	React.useEffect(() => {
 		const handleScroll = () => {
@@ -21,6 +25,10 @@ export const Navbar: React.FC = () => {
 		};
 	}, []);
 
+	const navbarWrapperBackground = {
+		background: activeTheme === "dark" ? "rgb(0, 0, 0)" : "rgb(250, 250, 250)",
+	} as React.CSSProperties;
+
 	return (
 		<div
 			id="navbar-wrapper"
@@ -32,6 +40,7 @@ export const Navbar: React.FC = () => {
 			)}
 			data-navigation-header
 			data-scrolled={hasScrolled}
+			style={navbarWrapperBackground}
 		>
 			<div className={clsx(styles.navbar)}>
 				<div className={clsx(styles.left)}>
@@ -96,12 +105,7 @@ export const Navbar: React.FC = () => {
 					</div>
 				</Stack>
 
-				<div
-					className={clsx(
-						styles["mobile-menu-toggle"],
-						styles["mobile-menuRoot"]
-					)}
-				></div>
+				<MobileMenu />
 			</div>
 		</div>
 	);

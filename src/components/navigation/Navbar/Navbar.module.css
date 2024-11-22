@@ -105,11 +105,4 @@
   transition-timing-function: cubic-bezier(.14, .55, .3, .92);
 }
 
-@media (min-width: 1151px) {
-  .mobile-menu-toggle {
-    display: none;
-  }
-}
-.mobile-menuRoot {
-  z-index: 9999;
-}
+
