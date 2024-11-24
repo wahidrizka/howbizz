@@ -135,7 +135,7 @@
   --themed-border: var(--themed-bg);
   --themed-focus-ring: #ffaba3;
 }
-html:not(.dark-theme) .new-themed.new-error-fill {
+html:not(.dark) .new-themed.new-error-fill {
   --themed-fg: #f5f5f5;
   --themed-hover-bg: #ae292f;
   --themed-press-bg: #7c1316;
@@ -153,6 +153,19 @@ html:not(.dark-theme) .new-themed.new-error-fill {
   --themed-border: var(--themed-bg);
   --themed-press-bg: #a35200;
   --themed-focus-ring: #a35200;
+}
+.new-themed.new-howbizz {
+  --themed-fg: var(--ds-amber-800);
+  --themed-bg: var(--ds-amber-100);
+  --themed-border: var(--ds-amber-300);
+}
+.new-themed.new-howbizz-fill {
+  --themed-fg: #f5f5f5;
+  --themed-bg: var(--ds-amber-700);
+  --themed-hover-bg: var(--ds-amber-800);
+  --themed-border: var(--themed-bg);
+  --themed-press-bg: var(--ds-amber-800);
+  --themed-focus-ring: var(--ds-amber-900);
 }
 
 .invert[data-active][data-button],

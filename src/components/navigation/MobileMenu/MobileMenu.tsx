@@ -41,7 +41,7 @@ export const MobileMenu = () => {
 				>
 					<nav className={clsx(styles["popover-wrapper"])}>
 						<section className={clsx(styles["popover-ctas"])}>
-							<Button as="link" href="/sign-up">
+							<Button as="link" href="/sign-up" type="howbizz">
 								Sign Up
 							</Button>
 							<Button as="link" href="#" type="secondary">

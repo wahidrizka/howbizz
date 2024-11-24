@@ -11,6 +11,7 @@ export const ButtonTypes = [
 	"tertiary",
 	"error",
 	"warning",
+	"howbizz",
 ] as const;
 export const ButtonShapes = ["square", "circle", "rounded"] as const;
 
@@ -68,13 +69,13 @@ export const Button: React.FC<Props> = (props) => {
 		styles.base,
 		styles.button,
 		size && styles[size],
-		type && styles[type],
-		type &&
-			(type === "error" || type === "warning") && [
-				styles["new-themed"],
-				styles[`new-${type}`],
-				styles[`new-${type}-fill`],
-			],
+		type && (type === "error" || type === "warning" || type === "howbizz")
+			? [
+					styles["new-themed"],
+					styles[`new-${type}`],
+					styles[`new-${type}-fill`],
+			  ]
+			: type && styles[type],
 		shape && shape !== "rounded" && styles.shape,
 		shape === "circle" && styles.circle,
 		shape === "rounded" && styles.rounded,

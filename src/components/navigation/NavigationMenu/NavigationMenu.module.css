@@ -23,7 +23,7 @@
   border-radius: 9999px;
   transition: .25s ease;
   transition-property: width, transform, opacity;
-  background: var(--ds-gray-200);
+  background: var(--ds-amber-300);
 }
 
 .menuList {
@@ -71,7 +71,7 @@
 }
 .menuLink:hover,
 .menuTrigger:hover {
-  color: var(--ds-gray-1000);
+  color: var(--ds-amber-800);
 }
 .menuLink:focus-visible,
 .menuTrigger:focus-visible {
@@ -84,7 +84,7 @@
 }
 .menuLink[data-active="open"],
 .menuTrigger[data-active="open"] {
-  background: var(--ds-gray-200);
-  color: var(--ds-gray-1000) !important;
+  background: var(--ds-amber-300);
+  color: var(--ds-amber-800) !important;
   transition-duration: 0s;
 }

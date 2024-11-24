@@ -77,6 +77,7 @@ export const Navbar: React.FC = () => {
 							as="link"
 							href={hasScrolled ? "/contact/sales" : "/signup"}
 							size="small"
+							type="howbizz"
 							className={clsx(styles["morphing-button-linkGhostCta"])}
 						>
 							{hasScrolled ? "Get a Demo" : "Sign Up"}
@@ -85,6 +86,7 @@ export const Navbar: React.FC = () => {
 							as="link"
 							href={hasScrolled ? "/contact/sales" : "/signup"}
 							size="small"
+							type="howbizz"
 							className={clsx(styles["morphing-button-linkDisplayCta"])}
 							style={
 								hasScrolled ? { width: "100.656px" } : { width: "74.7969px" }

@@ -1,14 +1,10 @@
 import React from "react";
 import styles from "./Stack.module.css";
 import clsx from "clsx";
+import { getResponsiveValue } from "@/utils";
+import { ResponsiveMap } from "@/types";
 
 export const StackDirection = ["row", "column"] as const;
-export const StackGap = [
-	0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-] as const;
-export const StackPadding = [
-	0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
-] as const;
 export const StackAlign = [
 	"start",
 	"end",
@@ -18,67 +14,34 @@ export const StackAlign = [
 ] as const;
 export const StackJustify = [
 	"normal",
-	"start",
-	"end",
+	"flex-start",
+	"flex-end",
 	"center",
-	"between",
-	"around",
-	"evenly",
+	"space-between",
+	"space-around",
+	"space-evenly",
 	"stretch",
 ] as const;
-export const StackFlex = ["initial", "1", "auto", "none"] as const;
+export const StackFlex = ["initial", "1 1 0%", "1 1 auto", "none"] as const;
 
 export const DefaultStackDirection = StackDirection[1];
-export const DefaultStackGap = StackGap[0];
-export const DefaultStackPadding = StackPadding[0];
 export const DefaultStackAlign = StackAlign[4];
 export const DefaultStackJustify = StackJustify[1];
 export const DefaultStackFlex = StackFlex[0];
 
-export type ResponsiveDirectionMap = {
-	sm?: (typeof StackDirection)[number];
-	md?: (typeof StackDirection)[number];
-	lg?: (typeof StackDirection)[number];
-	xl?: (typeof StackDirection)[number];
-};
-export type ResponsiveAlignMap = {
-	sm?: (typeof StackAlign)[number];
-	md?: (typeof StackAlign)[number];
-	lg?: (typeof StackAlign)[number];
-	xl?: (typeof StackAlign)[number];
-};
-export type ResponsiveJustifyMap = {
-	sm?: (typeof StackJustify)[number];
-	md?: (typeof StackJustify)[number];
-	lg?: (typeof StackJustify)[number];
-	xl?: (typeof StackJustify)[number];
-};
-export type ResponsiveFlexMap = {
-	sm?: (typeof StackFlex)[number];
-	md?: (typeof StackFlex)[number];
-	lg?: (typeof StackFlex)[number];
-	xl?: (typeof StackFlex)[number];
-};
-export type ResponsiveGapMap = {
-	sm?: (typeof StackGap)[number];
-	md?: (typeof StackGap)[number];
-	lg?: (typeof StackGap)[number];
-	xl?: (typeof StackGap)[number];
-};
-export type ResponsivePaddingMap = {
-	sm?: (typeof StackPadding)[number];
-	md?: (typeof StackPadding)[number];
-	lg?: (typeof StackPadding)[number];
-	xl?: (typeof StackPadding)[number];
-};
-
 export type StackProps = {
-	direction?: (typeof StackDirection)[number] | ResponsiveDirectionMap;
-	align?: (typeof StackAlign)[number] | ResponsiveAlignMap;
-	justify?: (typeof StackJustify)[number] | ResponsiveJustifyMap;
-	flex?: (typeof StackFlex)[number] | ResponsiveFlexMap;
-	gap?: (typeof StackGap)[number] | ResponsiveGapMap;
-	padding?: (typeof StackPadding)[number] | ResponsivePaddingMap;
+	direction?:
+		| (typeof StackDirection)[number]
+		| ResponsiveMap<(typeof StackDirection)[number]>;
+	align?:
+		| (typeof StackAlign)[number]
+		| ResponsiveMap<(typeof StackAlign)[number]>;
+	justify?:
+		| (typeof StackJustify)[number]
+		| ResponsiveMap<(typeof StackJustify)[number]>;
+	flex?: (typeof StackFlex)[number] | ResponsiveMap<(typeof StackFlex)[number]>;
+	gap?: string | number | ResponsiveMap<string | number>;
+	padding?: string | number | ResponsiveMap<string | number>;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 export const Stack: React.FC<StackProps> = ({
@@ -86,87 +49,69 @@ export const Stack: React.FC<StackProps> = ({
 	align = DefaultStackAlign,
 	justify = DefaultStackJustify,
 	flex = DefaultStackFlex,
-	gap = DefaultStackGap,
-	padding = DefaultStackPadding,
+	gap = "0px",
+	padding = "0px",
 	className,
 	style,
 	children,
 	...props
 }) => {
-	const directionClasses = React.useMemo(() => {
-		if (!direction) return null;
+	const isResponsivePadding = typeof padding === "object";
+	const isResponsiveGap = typeof gap === "object";
 
-		return typeof direction === "string"
-			? styles[`direction-${direction}`]
-			: Object.entries(direction)
-					.map(([viewport, value]) => styles[`direction-${viewport}-${value}`])
-					.join(" ");
-	}, [direction]);
+	// Responsive values
+	const smPadding = isResponsivePadding
+		? getResponsiveValue(padding, "sm")
+		: undefined;
+	const mdPadding = isResponsivePadding
+		? getResponsiveValue(padding, "md")
+		: undefined;
+	const lgPadding = isResponsivePadding
+		? getResponsiveValue(padding, "lg")
+		: undefined;
+	const xlPadding = isResponsivePadding
+		? getResponsiveValue(padding, "xl")
+		: undefined;
 
-	const alignClasses = React.useMemo(() => {
-		if (!align) return null;
+	const smGap = isResponsiveGap ? getResponsiveValue(gap, "sm") : undefined;
+	const mdGap = isResponsiveGap ? getResponsiveValue(gap, "md") : undefined;
+	const lgGap = isResponsiveGap ? getResponsiveValue(gap, "lg") : undefined;
+	const xlGap = isResponsiveGap ? getResponsiveValue(gap, "xl") : undefined;
 
-		return typeof align === "string"
-			? styles[`align-${align}`]
-			: Object.entries(align)
-					.map(([viewport, value]) => styles[`align-${viewport}-${value}`])
-					.join(" ");
-	}, [align]);
+	// Styles
+	const stackStyles = {
+		"--stack-flex": flex,
+		"--stack-direction":
+			typeof direction === "object" ? DefaultStackDirection : direction,
+		"--stack-align": typeof align === "object" ? DefaultStackAlign : align,
+		"--stack-justify":
+			typeof justify === "object" ? DefaultStackJustify : justify,
 
-	const justifyClasses = React.useMemo(() => {
-		if (!justify) return null;
+		// Responsive styles
+		"--sm-stack-padding": smPadding,
+		"--md-stack-padding": mdPadding,
+		"--lg-stack-padding": lgPadding,
+		"--xl-stack-padding": xlPadding,
+		"--sm-stack-gap": smGap,
+		"--md-stack-gap": mdGap,
+		"--lg-stack-gap": lgGap,
+		"--xl-stack-gap": xlGap,
+		// Fallback to global value if not responsive
+		"--stack-padding": !isResponsivePadding ? padding : undefined,
+		"--stack-gap": !isResponsiveGap ? gap : undefined,
 
-		return typeof justify === "string"
-			? styles[`justify-${justify}`]
-			: Object.entries(justify)
-					.map(([viewport, value]) => styles[`justify-${viewport}-${value}`])
-					.join(" ");
-	}, [justify]);
-
-	const flexClasses = React.useMemo(() => {
-		if (!flex) return null;
-
-		return typeof flex === "string"
-			? styles[`flex-${flex}`]
-			: Object.entries(flex)
-					.map(([viewport, value]) => styles[`flex-${viewport}-${value}`])
-					.join(" ");
-	}, [flex]);
-
-	const gapClasses = React.useMemo(() => {
-		if (gap === null || gap === undefined) return null;
-
-		return typeof gap === "number"
-			? styles[`gap-${gap}`]
-			: Object.entries(gap)
-					.map(([viewport, value]) => styles[`gap-${viewport}-${value}`])
-					.join(" ");
-	}, [gap]);
-
-	const paddingClasses = React.useMemo(() => {
-		if (padding === null || padding === undefined) return null;
-
-		return typeof padding === "number"
-			? styles[`padding-${padding}`]
-			: Object.entries(padding)
-					.map(([viewport, value]) => styles[`padding-${viewport}-${value}`])
-					.join(" ");
-	}, [padding]);
+		// Allow additional inline styles
+		...style,
+	} as React.CSSProperties;
 
 	return (
 		<div
 			className={clsx(
 				styles.stack,
-				directionClasses,
-				alignClasses,
-				justifyClasses,
-				flexClasses,
-				gapClasses,
-				styles.padding,
-				paddingClasses,
+				padding !== "0px" && styles.padding,
 				className
 			)}
-			style={style}
+			style={stackStyles}
 			{...props}
 		>
 			{children}
