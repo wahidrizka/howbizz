@@ -60,6 +60,9 @@ export const Stack: React.FC<StackProps> = ({
 	const isResponsiveGap = typeof gap === "object";
 
 	// Responsive values
+	const xsPadding = isResponsivePadding
+		? getResponsiveValue(padding, "xs")
+		: undefined;
 	const smPadding = isResponsivePadding
 		? getResponsiveValue(padding, "sm")
 		: undefined;
@@ -73,6 +76,7 @@ export const Stack: React.FC<StackProps> = ({
 		? getResponsiveValue(padding, "xl")
 		: undefined;
 
+	const xsGap = isResponsiveGap ? getResponsiveValue(gap, "xs") : undefined;
 	const smGap = isResponsiveGap ? getResponsiveValue(gap, "sm") : undefined;
 	const mdGap = isResponsiveGap ? getResponsiveValue(gap, "md") : undefined;
 	const lgGap = isResponsiveGap ? getResponsiveValue(gap, "lg") : undefined;
@@ -88,10 +92,12 @@ export const Stack: React.FC<StackProps> = ({
 			typeof justify === "object" ? DefaultStackJustify : justify,
 
 		// Responsive styles
+		"--xs-stack-padding": xsPadding,
 		"--sm-stack-padding": smPadding,
 		"--md-stack-padding": mdPadding,
 		"--lg-stack-padding": lgPadding,
 		"--xl-stack-padding": xlPadding,
+		"--xs-stack-gap": xsGap,
 		"--sm-stack-gap": smGap,
 		"--md-stack-gap": mdGap,
 		"--lg-stack-gap": lgGap,
