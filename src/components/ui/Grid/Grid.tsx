@@ -9,7 +9,7 @@ export type GridType = {
 	columns?: number | ResponsiveMap<number>;
 	rows?: number | ResponsiveMap<number>;
 	height?: number | string | ResponsiveMap<number | string>;
-} & React.HTMLAttributes<HTMLDivElement>;
+} & React.HTMLAttributes<HTMLElement>;
 
 const Root = ({
 	columns,
@@ -96,13 +96,13 @@ const Root = ({
 	} as React.CSSProperties;
 
 	return (
-		<div
+		<section
 			className={clsx(styles.grid, className)}
 			style={{ ...gridStyles, ...style }}
 			data-grid
 		>
 			{children}
-		</div>
+		</section>
 	);
 };
 
@@ -477,12 +477,21 @@ const GridBlock = ({
 	} as React.CSSProperties;
 
 	return (
-		<div
-			className={clsx(styles.block, className)}
-			style={{ ...blockStyles, ...style }}
-		>
-			{children}
-		</div>
+		<>
+			<div
+				className={clsx(styles.block, className)}
+				style={{ ...blockStyles, ...style }}
+			>
+				{children}
+			</div>
+			<GridGuides />
+		</>
+	);
+};
+
+const GridGuides = () => {
+	return (
+		<div aria-hidden className={clsx(styles.guides)} data-grid-guides></div>
 	);
 };
 
@@ -490,4 +499,5 @@ export const Grid = Object.assign(Root, {
 	System: GridSystem,
 	Cross: GridCross,
 	Cell: GridBlock,
+	Guides: GridGuides,
 });

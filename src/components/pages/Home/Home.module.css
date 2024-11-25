@@ -23,9 +23,3 @@
   color: var(--ds-gray-1000);
   font-weight: 500;
 }
-
-.guides {
-  pointer-events: none;
-  z-index: 1;
-  display: contents;
-}
