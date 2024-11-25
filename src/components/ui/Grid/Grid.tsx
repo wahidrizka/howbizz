@@ -28,7 +28,7 @@ const Root = ({
 		: undefined;
 	const xsRows = isResponsiveRows ? getResponsiveValue(rows, "xs") : undefined;
 	const xsHeight = isResponsiveHeight
-		? getResponsiveValue(rows, "xs")
+		? getResponsiveValue(height, "xs")
 		: undefined;
 
 	const smColumns = isResponsiveColumns
@@ -36,7 +36,7 @@ const Root = ({
 		: undefined;
 	const smRows = isResponsiveRows ? getResponsiveValue(rows, "sm") : undefined;
 	const smHeight = isResponsiveHeight
-		? getResponsiveValue(rows, "sm")
+		? getResponsiveValue(height, "sm")
 		: undefined;
 
 	const smdColumns = isResponsiveColumns
@@ -46,7 +46,7 @@ const Root = ({
 		? getResponsiveValue(rows, "smd")
 		: undefined;
 	const smdHeight = isResponsiveHeight
-		? getResponsiveValue(rows, "smd")
+		? getResponsiveValue(height, "smd")
 		: undefined;
 
 	const mdColumns = isResponsiveColumns
@@ -54,7 +54,7 @@ const Root = ({
 		: undefined;
 	const mdRows = isResponsiveRows ? getResponsiveValue(rows, "md") : undefined;
 	const mdHeight = isResponsiveHeight
-		? getResponsiveValue(rows, "md")
+		? getResponsiveValue(height, "md")
 		: undefined;
 
 	const lgColumns = isResponsiveColumns
@@ -62,8 +62,27 @@ const Root = ({
 		: undefined;
 	const lgRows = isResponsiveRows ? getResponsiveValue(rows, "lg") : undefined;
 	const lgHeight = isResponsiveHeight
-		? getResponsiveValue(rows, "lg")
+		? getResponsiveValue(height, "lg")
 		: undefined;
+
+	const xlColumns = isResponsiveColumns
+		? getResponsiveValue(columns, "xl")
+		: undefined;
+	const xlRows = isResponsiveRows ? getResponsiveValue(rows, "xl") : undefined;
+	const xlHeight = isResponsiveHeight
+		? getResponsiveValue(height, "xl")
+		: undefined;
+
+	const currentColumns =
+		xsColumns ||
+		smColumns ||
+		smdColumns ||
+		mdColumns ||
+		lgColumns ||
+		xlColumns ||
+		1;
+	const currentRows =
+		xsRows || smRows || smdRows || mdRows || lgRows || xlRows || 1;
 
 	const gridStyles = {
 		"--xs-grid-columns": xsColumns,
@@ -72,12 +91,7 @@ const Root = ({
 
 		"--sm-grid-columns": smColumns,
 		"--sm-grid-rows": smRows,
-		"--sm-height":
-			height === "preserve-aspect-ratio"
-				? "calc(var(--width) / var(--grid-columns) * var(--grid-rows))"
-				: !isResponsiveHeight
-				? height
-				: smHeight,
+		"--sm-height": smHeight,
 
 		"--smd-grid-columns": smdColumns,
 		"--smd-grid-rows": smdRows,
@@ -91,8 +105,13 @@ const Root = ({
 		"--lg-grid-rows": lgRows,
 		"--lg-height": lgHeight,
 
+		"--xl-grid-columns": xlColumns,
+		"--xl-grid-rows": xlRows,
+		"--xl-height": xlHeight,
+
 		"--grid-columns": !isResponsiveColumns ? columns : undefined,
 		"--grid-rows": !isResponsiveRows ? rows : undefined,
+		"--height": !isResponsiveHeight ? height : undefined,
 	} as React.CSSProperties;
 
 	return (
@@ -102,6 +121,23 @@ const Root = ({
 			data-grid
 		>
 			{children}
+			<div aria-hidden className={clsx(styles.guides)} data-grid-guides>
+				{Array.from({ length: currentRows * currentColumns }).map(
+					(_, index) => {
+						const x = Math.floor(index / currentColumns) + 1;
+						const y = (index % currentColumns) + 1;
+						return (
+							<GridGuide
+								key={`${x}-${y}`}
+								x={x}
+								y={y}
+								columns={currentColumns}
+								rows={currentRows}
+							/>
+						);
+					}
+				)}
+			</div>
 		</section>
 	);
 };
@@ -316,10 +352,10 @@ const GridCross = ({
 };
 
 type GridBlockType = {
-	gridRow?: number | string | ResponsiveMap<number>;
-	gridColumn?: number | string | ResponsiveMap<number>;
-	cellRows?: number | string | ResponsiveMap<number>;
-	cellColumns?: number | string | ResponsiveMap<number>;
+	gridRow?: number | string | ResponsiveMap<number | string>;
+	gridColumn?: number | string | ResponsiveMap<number | string>;
+	cellRows?: number | string | ResponsiveMap<number | string>;
+	cellColumns?: number | string | ResponsiveMap<number | string>;
 	cellDisplay?: string | ResponsiveMap<string>;
 	cellPadding?: string | ResponsiveMap<string>;
 } & React.HTMLAttributes<HTMLDivElement>;
@@ -477,27 +513,44 @@ const GridBlock = ({
 	} as React.CSSProperties;
 
 	return (
-		<>
-			<div
-				className={clsx(styles.block, className)}
-				style={{ ...blockStyles, ...style }}
-			>
-				{children}
-			</div>
-			<GridGuides />
-		</>
+		<div
+			className={clsx(styles.block, className)}
+			style={{ ...blockStyles, ...style }}
+		>
+			{children}
+		</div>
 	);
 };
 
-const GridGuides = () => {
-	return (
-		<div aria-hidden className={clsx(styles.guides)} data-grid-guides></div>
-	);
+type GridGuideType = {
+	x: number | ResponsiveMap<number>;
+	y: number | ResponsiveMap<number>;
+	columns: number;
+	rows: number;
+	borderLeft?: string;
+	borderTop?: string;
+} & React.HTMLAttributes<HTMLDivElement>;
+const GridGuide = ({
+	x,
+	y,
+	columns,
+	rows,
+	borderLeft,
+	borderTop,
+}: GridGuideType) => {
+	const guidestyles = {
+		"--x": x,
+		"--y": y,
+		borderLeft: borderLeft,
+		borderTop: borderTop,
+		borderRight: x === rows ? "none" : undefined,
+		borderBottom: y === columns ? "none" : undefined,
+	};
+	return <div className={clsx(styles.guide)} style={{ ...guidestyles }}></div>;
 };
 
 export const Grid = Object.assign(Root, {
 	System: GridSystem,
 	Cross: GridCross,
 	Cell: GridBlock,
-	Guides: GridGuides,
 });

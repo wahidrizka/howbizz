@@ -213,3 +213,29 @@
   z-index: 1;
   display: contents;
 }
+.guide {
+  inset: 0;
+  position: absolute;
+  grid-column-start: var(--x);
+  grid-row-start: var(--y);
+  grid-column-end: span 1;
+  grid-row-end: span 1;
+  border: var(--guide-width) solid var(--guide-color);
+  border-left: none;
+  border-top: none;
+}
+@media screen and (min-width: 601px) and (max-width: 768px) {
+  .lgGuide, .mdGuide, .smGuide, .xsGuide {
+      display: none;
+  }
+}
+@media screen and (min-width: 401px) and (max-width: 600px) {
+  .lgGuide, .mdGuide, .smdGuide, .xsGuide {
+      display: none;
+  }
+}
+@media screen and (max-width: 400px) {
+  .lgGuide, .mdGuide, .smGuide, .smdGuide {
+      display: none;
+  }
+}

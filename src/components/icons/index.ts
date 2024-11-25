@@ -4,3 +4,5 @@ export * from "./ArrowRight";
 export * from "./DeviceAlternate";
 export * from "./Sun";
 export * from "./Moon";
+
+export * from "./DailyExperience";

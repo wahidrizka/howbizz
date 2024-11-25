@@ -1,3 +1,4 @@
+"use client";
 import { ResponsiveMap } from "@/types";
 
 // Utility function to extract responsive values
