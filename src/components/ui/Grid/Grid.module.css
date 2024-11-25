@@ -204,3 +204,6 @@
       --cell-columns: var(--xs-cell-columns, var(--sm-cell-columns));
   }
 }
+.block>div {
+  height: 100%;
+}
