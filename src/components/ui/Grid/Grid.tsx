@@ -9,19 +9,21 @@ export type GridType = {
 	columns?: number | ResponsiveMap<number>;
 	rows?: number | ResponsiveMap<number>;
 	height?: number | string | ResponsiveMap<number | string>;
+	hasGuide?: boolean;
 } & React.HTMLAttributes<HTMLElement>;
 
 const Root = ({
 	columns,
 	rows,
 	height,
+	hasGuide = true,
 	children,
 	className,
 	style,
 }: GridType) => {
 	const isResponsiveColumns = typeof columns === "object";
 	const isResponsiveRows = typeof rows === "object";
-	const isResponsiveHeight = typeof rows === "object";
+	const isResponsiveHeight = typeof height === "object";
 
 	const xsColumns = isResponsiveColumns
 		? getResponsiveValue(columns, "xs")
@@ -121,23 +123,25 @@ const Root = ({
 			data-grid
 		>
 			{children}
-			<div aria-hidden className={clsx(styles.guides)} data-grid-guides>
-				{Array.from({ length: currentRows * currentColumns }).map(
-					(_, index) => {
-						const x = Math.floor(index / currentColumns) + 1;
-						const y = (index % currentColumns) + 1;
-						return (
-							<GridGuide
-								key={`${x}-${y}`}
-								x={x}
-								y={y}
-								columns={currentColumns}
-								rows={currentRows}
-							/>
-						);
-					}
-				)}
-			</div>
+			{!hasGuide && (
+				<div aria-hidden className={clsx(styles.guides)} data-grid-guides>
+					{Array.from({ length: currentRows * currentColumns }).map(
+						(_, index) => {
+							const x = Math.floor(index / currentColumns) + 1;
+							const y = (index % currentColumns) + 1;
+							return (
+								<GridGuide
+									key={`${x}-${y}`}
+									x={x}
+									y={y}
+									columns={currentColumns}
+									rows={currentRows}
+								/>
+							);
+						}
+					)}
+				</div>
+			)}
 		</section>
 	);
 };
@@ -162,6 +166,7 @@ const UnstableUseContainer = ({
 
 export type GridSystemType = {
 	unstable_useContainer?: boolean;
+	lazy_content?: boolean;
 	maxWidth?: string | number;
 	minWidth?: string | number;
 	guideWidth?: string | number;
@@ -174,6 +179,7 @@ export type GridSystemType = {
 
 const GridSystem = ({
 	unstable_useContainer = false,
+	lazy_content = false,
 	maxWidth,
 	minWidth,
 	guideWidth,
@@ -196,6 +202,20 @@ const GridSystem = ({
 		"--cross-color": `var(--ds-${crossColor || "gray-600"})`,
 	} as React.CSSProperties;
 
+	if (lazy_content) {
+		return (
+			<div
+				className={clsx(
+					styles.gridSystemLazyContent,
+					debug && styles.gridSystemDebug,
+					className
+				)}
+				style={{ ...style }}
+			>
+				{children}
+			</div>
+		);
+	}
 	return unstable_useContainer ? (
 		<UnstableUseContainer>
 			<div

@@ -4,6 +4,8 @@ import React, { useState, useCallback } from "react";
 import Link, { LinkProps } from "next/link";
 import styles from "./Button.module.css";
 import { Spinner } from "../Spinner";
+import { ResponsiveMap } from "@/types";
+import { getResponsiveValue } from "@/utils";
 
 export const ButtonSizes = ["tiny", "small", "large"] as const;
 export const ButtonTypes = [
@@ -19,6 +21,10 @@ type ButtonBaseProps = {
 	as?: "button" | "link";
 	size?: (typeof ButtonSizes)[number];
 	type?: (typeof ButtonTypes)[number];
+	responsive?: boolean;
+	xPadding?: string | ResponsiveMap<string>;
+	geistIconSize?: string;
+	height?: string | ResponsiveMap<string>;
 	shape?: (typeof ButtonShapes)[number];
 	svgOnly?: boolean;
 	leadingVisual?: React.ReactNode;
@@ -49,6 +55,10 @@ export const Button: React.FC<Props> = (props) => {
 		as = "button",
 		size,
 		type,
+		responsive = false,
+		xPadding,
+		height,
+		geistIconSize = "16px",
 		shape,
 		svgOnly = false,
 		leadingVisual,
@@ -64,6 +74,46 @@ export const Button: React.FC<Props> = (props) => {
 
 	const spinnerSize = size === "large" ? 24 : 16;
 
+	const isXPaddingResponsive = typeof xPadding === "object";
+	const isHeightResponsive = typeof height === "object";
+
+	const smXPadding = isHeightResponsive
+		? getResponsiveValue(xPadding, "sm")
+		: undefined;
+	const smHeight = isHeightResponsive
+		? getResponsiveValue(height, "sm")
+		: undefined;
+
+	const mdXPadding = isHeightResponsive
+		? getResponsiveValue(xPadding, "md")
+		: undefined;
+	const mdHeight = isHeightResponsive
+		? getResponsiveValue(height, "md")
+		: undefined;
+
+	const lgXPadding = isHeightResponsive
+		? getResponsiveValue(xPadding, "lg")
+		: undefined;
+	const lgHeight = isHeightResponsive
+		? getResponsiveValue(height, "lg")
+		: undefined;
+
+	const buttonStyles = {
+		"--geist-icon-size": geistIconSize,
+
+		"--sm-x-padding": smXPadding,
+		"--sm-height": smHeight,
+
+		"--md-x-padding": mdXPadding,
+		"--md-height": mdHeight,
+
+		"--lg-x-padding": lgXPadding,
+		"--lg-height": lgHeight,
+
+		"--x-padding": !isXPaddingResponsive ? xPadding : undefined,
+		"--height": !isHeightResponsive ? height : undefined,
+	} as React.CSSProperties;
+
 	const buttonClasses = clsx(
 		styles.reset,
 		styles.base,
@@ -76,6 +126,7 @@ export const Button: React.FC<Props> = (props) => {
 					styles[`new-${type}-fill`],
 			  ]
 			: type && styles[type],
+		responsive && styles.responsive,
 		shape && shape !== "rounded" && styles.shape,
 		shape === "circle" && styles.circle,
 		shape === "rounded" && styles.rounded,
@@ -96,7 +147,7 @@ export const Button: React.FC<Props> = (props) => {
 			<Link
 				{...linkRest}
 				className={buttonClasses}
-				style={style}
+				style={{ ...buttonStyles, ...style }}
 				onMouseEnter={handleMouseEnter}
 				onMouseLeave={handleMouseLeave}
 				data-button
@@ -137,7 +188,7 @@ export const Button: React.FC<Props> = (props) => {
 			data-suffix={!!trailingVisual}
 			data-hover={isHovered}
 			disabled={disabled}
-			style={style}
+			style={{ ...buttonStyles, ...style }}
 			{...(rest as React.ButtonHTMLAttributes<HTMLButtonElement>)}
 		>
 			{loading && (

@@ -1,6 +1,6 @@
 "use client";
 
-import { Grid, Stack, Text } from "@/components";
+import { Button, Grid, Sparkles, Stack, Text } from "@/components";
 import clsx from "clsx";
 import styles from "./Home.module.css";
 import React from "react";
@@ -146,6 +146,75 @@ export const Home = () => {
 						</Grid.Cell>
 					))}
 				</Grid>
+				<Grid.System lazy_content>
+					<Grid
+						rows={1}
+						columns={{ sm: 2, lg: 3 }}
+						height={{ sm: "16px" }}
+						hasGuide={false}
+					/>
+					<Grid
+						rows={1}
+						columns={{ sm: 2, md: 3 }}
+						height={{ sm: "fit-content" }}
+					>
+						<Grid.Cell
+							gridRow={{ sm: "auto" }}
+							gridColumn={{ sm: "1 / 4" }}
+							cellRows={{ sm: "auto" }}
+							cellColumns={{ sm: 3 }}
+							className={clsx(
+								"!flex !flex-col !items-center !justify-between !gap-2 !pb-[46px] !pt-[76px] !text-center md:!flex-row md:!py-32 md:!text-left"
+							)}
+						>
+							<Text
+								as="h2"
+								size={{
+									xs: "1.5rem",
+									sm: "1.5rem",
+									smd: "2rem",
+									md: "2rem",
+									lg: "2.5rem",
+								}}
+								lineHeight={{
+									xs: "2rem",
+									sm: "2rem",
+									smd: "2.5rem",
+									md: "2.5rem",
+									lg: "3rem",
+								}}
+								weight={{
+									xs: "600",
+									sm: "600",
+									smd: "600",
+									md: "600",
+									lg: "600",
+								}}
+								letterSpacing={{
+									xs: "-0.96px",
+									sm: "-0.96px",
+									smd: "-1.28px",
+									md: "-1.28px",
+									lg: "-2.4px",
+								}}
+								className={clsx("!mb-4 !max-w-[75%] md:!mb-0 md:!max-w-full")}
+							>
+								Join us and shape the future of the web.
+							</Text>
+							<Button
+								as="link"
+								href="/benefits"
+								shape="rounded"
+								responsive
+								xPadding={{ sm: "10px", md: "10px", lg: "14px" }}
+								height={{ sm: "40px", md: "40px", lg: "48px" }}
+								leadingVisual={<Sparkles />}
+							>
+								View Benefits
+							</Button>
+						</Grid.Cell>
+					</Grid>
+				</Grid.System>
 			</Grid.System>
 		</Stack>
 	);
