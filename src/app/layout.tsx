@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { Navbar, ThemeProvider } from "@/components";
+import { Footer, Navbar, ThemeProvider } from "@/components";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
 
@@ -30,6 +30,7 @@ export default function RootLayout({
 				<ThemeProvider attribute="class" enableSystem={true}>
 					<Navbar></Navbar>
 					<div>{children}</div>
+					<Footer variant="subtle"></Footer>
 				</ThemeProvider>
 			</body>
 		</html>

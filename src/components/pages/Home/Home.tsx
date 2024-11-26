@@ -199,7 +199,8 @@ export const Home = () => {
 								}}
 								className={clsx("!mb-4 !max-w-[75%] md:!mb-0 md:!max-w-full")}
 							>
-								Join us and shape the future of the web.
+								Realize your potential with{" "}
+								<span style={{ color: "var(--ds-amber-800)" }}>Howbizz</span>
 							</Text>
 							<Button
 								as="link"
