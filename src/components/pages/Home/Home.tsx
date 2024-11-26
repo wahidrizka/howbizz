@@ -1,6 +1,6 @@
 "use client";
 
-import { DailyExperience, Grid, Stack, Text } from "@/components";
+import { Grid, Stack, Text } from "@/components";
 import clsx from "clsx";
 import styles from "./Home.module.css";
 import React from "react";
