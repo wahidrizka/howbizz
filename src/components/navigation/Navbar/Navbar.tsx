@@ -54,7 +54,7 @@ export const Navbar: React.FC = () => {
 					id="navbar-content"
 					direction="row"
 					align="center"
-					gap={3}
+					gap="12px"
 					className={clsx(
 						styles["navbar-content"],
 						styles["right-sectionContent"],

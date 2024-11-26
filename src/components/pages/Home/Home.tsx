@@ -4,6 +4,7 @@ import { DailyExperience, Grid, Stack, Text } from "@/components";
 import clsx from "clsx";
 import styles from "./Home.module.css";
 import React from "react";
+import { Philosophies } from "@/data";
 
 export const Home = () => {
 	const stackStyles = {
@@ -93,167 +94,57 @@ export const Home = () => {
 							"absolute bottom-0 left-1/2 top-0 ml-[-0.5px] w-px -translate-x-1/2 bg-gray-200 md:hidden"
 						)}
 					/>
-					<Grid.Cell
-						gridRow={{ sm: "1 / span 1" }}
-						gridColumn={{ sm: "auto" }}
-						cellRows={{ sm: 1 }}
-						cellColumns={{ sm: "auto" }}
-						className={clsx(
-							"relative flex flex-col items-center py-6 text-center md:items-start md:py-[90px] md:text-left"
-						)}
-						style={{ overflow: "visible" }}
-					>
-						<DailyExperience
-							stroke="var(--ds-amber-800)"
-							className={clsx("mb-6")}
-						/>
-						<Text
-							color="gray-900"
-							size={{
-								xs: "1rem",
-								sm: "1rem",
-								smd: "1.25rem",
-								md: "1.25rem",
-								lg: "1.5rem",
-							}}
-							lineHeight={{
-								xs: "1.5rem",
-								sm: "1.5rem",
-								smd: "1.625rem",
-								md: "1.625rem",
-								lg: "2rem",
-							}}
-							weight={{
-								xs: "500",
-								sm: "500",
-								smd: "500",
-								md: "500",
-								xl: "500",
-							}}
-							letterSpacing={{
-								xs: "-0.32px",
-								sm: "-0.32px",
-								smd: "-0.4px",
-								md: "-0.4px",
-								lg: "-0.96px",
-							}}
+					{Philosophies.map((philosophy, index) => (
+						<Grid.Cell
+							key={index}
+							gridRow={{ sm: "1 / span 1" }}
+							gridColumn={{ sm: "auto" }}
+							cellRows={{ sm: 1 }}
+							cellColumns={{ sm: "auto" }}
+							className={clsx(
+								"relative flex flex-col items-center py-6 text-center md:items-start md:py-[90px] md:text-left"
+							)}
+							style={{ overflow: "visible" }}
 						>
-							<b style={{ color: "var(--ds-gray-1000)", fontWeight: 600 }}>
-								Connect.{" "}
-							</b>
-							Menghubungkan mahasiswa dengan mentor, profesional industri, dan
-							sesama mahasiswa untuk memperluas jaringan dan mendapatkan wawasan
-							langsung dari dunia kerja.
-						</Text>
-					</Grid.Cell>
-
-					<Grid.Cell
-						gridRow={{ sm: "1 / span 1" }}
-						gridColumn={{ sm: "auto" }}
-						cellRows={{ sm: 1 }}
-						cellColumns={{ sm: "auto" }}
-						className={clsx(
-							"relative flex flex-col items-center py-6 text-center md:items-start md:py-[90px] md:text-left"
-						)}
-						style={{ overflow: "visible" }}
-					>
-						<DailyExperience
-							stroke="var(--ds-amber-800)"
-							className={clsx("mb-6")}
-						/>
-						<Text
-							color="gray-900"
-							size={{
-								xs: "1rem",
-								sm: "1rem",
-								smd: "1.25rem",
-								md: "1.25rem",
-								lg: "1.5rem",
-							}}
-							lineHeight={{
-								xs: "1.5rem",
-								sm: "1.5rem",
-								smd: "1.625rem",
-								md: "1.625rem",
-								lg: "2rem",
-							}}
-							weight={{
-								xs: "500",
-								sm: "500",
-								smd: "500",
-								md: "500",
-								xl: "500",
-							}}
-							letterSpacing={{
-								xs: "-0.32px",
-								sm: "-0.32px",
-								smd: "-0.4px",
-								md: "-0.4px",
-								lg: "-0.96px",
-							}}
-						>
-							<b style={{ color: "var(--ds-gray-1000)", fontWeight: 600 }}>
-								Grow.{" "}
-							</b>
-							Membantu mahasiswa mengembangkan keterampilan dan kemampuan mereka
-							dengan tujuan yang jelas, mendukung mereka dalam perjalanan untuk
-							mencapai karier yang sukses di industri digital.
-						</Text>
-					</Grid.Cell>
-
-					<Grid.Cell
-						gridRow={{ sm: "1 / span 1" }}
-						gridColumn={{ sm: "auto" }}
-						cellRows={{ sm: 1 }}
-						cellColumns={{ sm: "auto" }}
-						className={clsx(
-							"relative flex flex-col items-center py-6 text-center md:items-start md:py-[90px] md:text-left"
-						)}
-						style={{ overflow: "visible" }}
-					>
-						<DailyExperience
-							stroke="var(--ds-amber-800)"
-							className={clsx("mb-6")}
-						/>
-						<Text
-							color="gray-900"
-							size={{
-								xs: "1rem",
-								sm: "1rem",
-								smd: "1.25rem",
-								md: "1.25rem",
-								lg: "1.5rem",
-							}}
-							lineHeight={{
-								xs: "1.5rem",
-								sm: "1.5rem",
-								smd: "1.625rem",
-								md: "1.625rem",
-								lg: "2rem",
-							}}
-							weight={{
-								xs: "500",
-								sm: "500",
-								smd: "500",
-								md: "500",
-								xl: "500",
-							}}
-							letterSpacing={{
-								xs: "-0.32px",
-								sm: "-0.32px",
-								smd: "-0.4px",
-								md: "-0.4px",
-								lg: "-0.96px",
-							}}
-						>
-							<b style={{ color: "var(--ds-gray-1000)", fontWeight: 600 }}>
-								Work.{" "}
-							</b>
-							Memberikan peluang bagi mahasiswa untuk bekerja pada proyek nyata,
-							baik secara individu maupun tim, serta mendapatkan pengalaman
-							kerja yang berharga untuk meningkatkan daya saing di pasar kerja.
-						</Text>
-					</Grid.Cell>
+							{philosophy.icon}
+							<Text
+								color="gray-900"
+								size={{
+									xs: "1rem",
+									sm: "1rem",
+									smd: "1.25rem",
+									md: "1.25rem",
+									lg: "1.5rem",
+								}}
+								lineHeight={{
+									xs: "1.5rem",
+									sm: "1.5rem",
+									smd: "1.625rem",
+									md: "1.625rem",
+									lg: "2rem",
+								}}
+								weight={{
+									xs: "500",
+									sm: "500",
+									smd: "500",
+									md: "500",
+									xl: "500",
+								}}
+								letterSpacing={{
+									xs: "-0.32px",
+									sm: "-0.32px",
+									smd: "-0.4px",
+									md: "-0.4px",
+									lg: "-0.96px",
+								}}
+							>
+								<b style={{ color: "var(--ds-gray-1000)", fontWeight: 600 }}>
+									{philosophy.title}{" "}
+								</b>
+								{philosophy.description}
+							</Text>
+						</Grid.Cell>
+					))}
 				</Grid>
 			</Grid.System>
 		</Stack>
