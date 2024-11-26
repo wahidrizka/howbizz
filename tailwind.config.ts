@@ -1,16 +1,18 @@
 import type { Config } from "tailwindcss";
 
-const config: Config = {
+export default {
 	content: [
-		"./pages/**/*.{js,ts,jsx,tsx,mdx}",
-		"./components/**/*.{js,ts,jsx,tsx,mdx}",
-		"./app/**/*.{js,ts,jsx,tsx,mdx}",
-		"./styles/**/*.{css,scss,sass,less,styl,stylus}",
-		"./public/**/*.{ico,png,svg,jpg,jpeg,gif,webp,avif,mp4,webm,ogg,mp3,wav,flac,aac,wma,woff,woff2,ttf,eot,otf}",
+		"./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/styles/**/*.{css,scss,sass,less,stylus}",
+		"./src/data/**/*.{js,ts,jsx,tsx,mdx}",
+		"./src/types/**/*.{js,ts,jsx,tsx,mdx}",
 	],
 	theme: {
-		extend: {},
+		extend: {
+			colors: {},
+		},
 	},
 	plugins: [],
-};
-export default config;
+} satisfies Config;

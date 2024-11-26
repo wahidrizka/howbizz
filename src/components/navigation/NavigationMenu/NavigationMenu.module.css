@@ -1,0 +1,90 @@
+.menuRoot {
+  --margin-top: 20px;
+  --item-padding: 12px;
+  --arrow-bg: var(--menu-bg);
+  --menu-bg: #fff;
+  --menu-border-width: 1px;
+  --menu-border-color: var(--ds-gray-400);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.tabsHighlight {
+  position: absolute;
+  width: 50px;
+  height: 30px;
+  background: red;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  border-radius: 9999px;
+  transition: .25s ease;
+  transition-property: width, transform, opacity;
+  background: var(--ds-amber-300);
+}
+
+.menuList {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+.menuList > li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuLink,
+.menuTrigger {
+  outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  border-radius: 9999px;
+  background: transparent;
+  border: 0;
+  font-family: var(--font-sans);
+  padding: 8px 12px;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  transition-property: color, background;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+}
+.menuLink {
+  display: block;
+  text-decoration: none;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--ds-gray-900);
+  cursor: pointer;
+  outline: none;
+}
+.menuLink:hover,
+.menuTrigger:hover {
+  color: var(--ds-amber-800);
+}
+.menuLink:focus-visible,
+.menuTrigger:focus-visible {
+  box-shadow: var(--ds-focus-ring);
+}
+.link:focus-visible,
+.link[data-focus-visible-added] {
+  outline: var(--ds-focus-color) auto 2px;
+  outline-offset: 4px;
+}
+.menuLink[data-active="open"],
+.menuTrigger[data-active="open"] {
+  background: var(--ds-amber-300);
+  color: var(--ds-amber-800) !important;
+  transition-duration: 0s;
+}

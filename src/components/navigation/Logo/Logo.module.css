@@ -1,0 +1,11 @@
+.logoLink {
+  transition: box-shadow .2s ease;
+  border-radius: 4px;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+}
