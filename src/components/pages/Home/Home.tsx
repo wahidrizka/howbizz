@@ -1,10 +1,18 @@
 "use client";
 
-import { Button, Grid, Sparkles, Stack, Text } from "@/components";
+import {
+	Button,
+	Developers,
+	DreamLifter,
+	Grid,
+	Ideas,
+	Sparkles,
+	Stack,
+	Text,
+} from "@/components";
 import clsx from "clsx";
 import styles from "./Home.module.css";
 import React from "react";
-import { Philosophies } from "@/data";
 
 export const Home = () => {
 	const stackStyles = {
@@ -24,11 +32,11 @@ export const Home = () => {
 			className={clsx(styles.gridPage)}
 			style={stackStyles}
 		>
-			<Grid.System>
+			<Grid.System minWidth="250px">
 				<Grid
 					columns={1}
 					rows={1}
-					height="fit-content"
+					height={{ sm: "fit-content" }}
 					className={clsx(styles.simpleHeroVertical)}
 				>
 					<Grid.Cross />
@@ -88,63 +96,159 @@ export const Home = () => {
 					rows={{ sm: 3, md: 1 }}
 					columns={{ sm: 1, md: 3 }}
 					height={{ sm: "fit-content" }}
+					className={clsx("!relative !py-6 md:!py-0")}
 				>
 					<div
 						className={clsx(
-							"absolute bottom-0 left-1/2 top-0 ml-[-0.5px] w-px -translate-x-1/2 bg-gray-200 md:hidden"
+							"!absolute !bottom-0 !left-1/2 !top-0 !ml-[-0.5px] !w-px !-translate-x-1/2 !bg-gray-200 md:!hidden"
 						)}
 					/>
-					{Philosophies.map((philosophy, index) => (
-						<Grid.Cell
-							key={index}
-							gridRow={{ sm: "1 / span 1" }}
-							gridColumn={{ sm: "auto" }}
-							cellRows={{ sm: 1 }}
-							cellColumns={{ sm: "auto" }}
-							className={clsx(
-								"relative flex flex-col items-center py-6 text-center md:items-start md:py-[90px] md:text-left"
-							)}
-							style={{ overflow: "visible" }}
+					<Grid.Cell
+						gridRow={{ sm: "1 / span 1" }}
+						gridColumn={{ sm: "auto" }}
+						cellRows={{ sm: 1 }}
+						cellColumns={{ sm: "auto" }}
+						className={clsx(
+							"!relative !flex !flex-col !items-center !py-6 !text-center md:!items-start md:!py-[90px] md:!text-left"
+						)}
+						style={{ overflow: "visible" }}
+					>
+						<Ideas stroke="var(--ds-amber-800)" className="mb-6" />
+						<Text
+							color="gray-900"
+							size={{
+								xs: "1rem",
+								sm: "1rem",
+								smd: "1.25rem",
+								md: "1.25rem",
+								lg: "1.5rem",
+							}}
+							lineHeight={{
+								xs: "1.5rem",
+								sm: "1.5rem",
+								smd: "1.625rem",
+								md: "1.625rem",
+								lg: "2rem",
+							}}
+							weight={{
+								xs: "500",
+								sm: "500",
+								smd: "500",
+								md: "500",
+								xl: "500",
+							}}
+							letterSpacing={{
+								xs: "-0.32px",
+								sm: "-0.32px",
+								smd: "-0.4px",
+								md: "-0.4px",
+								lg: "-0.96px",
+							}}
 						>
-							{philosophy.icon}
-							<Text
-								color="gray-900"
-								size={{
-									xs: "1rem",
-									sm: "1rem",
-									smd: "1.25rem",
-									md: "1.25rem",
-									lg: "1.5rem",
-								}}
-								lineHeight={{
-									xs: "1.5rem",
-									sm: "1.5rem",
-									smd: "1.625rem",
-									md: "1.625rem",
-									lg: "2rem",
-								}}
-								weight={{
-									xs: "500",
-									sm: "500",
-									smd: "500",
-									md: "500",
-									xl: "500",
-								}}
-								letterSpacing={{
-									xs: "-0.32px",
-									sm: "-0.32px",
-									smd: "-0.4px",
-									md: "-0.4px",
-									lg: "-0.96px",
-								}}
-							>
-								<b style={{ color: "var(--ds-gray-1000)", fontWeight: 600 }}>
-									{philosophy.title}{" "}
-								</b>
-								{philosophy.description}
-							</Text>
-						</Grid.Cell>
-					))}
+							<b style={{ color: "var(--ds-gray-1000)", fontWeight: 600 }}>
+								Opportunity.{" "}
+							</b>
+							Peluang melalui proyek nyata dan pengalaman langsung di industri.
+						</Text>
+					</Grid.Cell>
+					<Grid.Cell
+						gridRow={{ sm: "2 / span 1", smd: "1 / span 1" }}
+						gridColumn={{ sm: "auto" }}
+						cellRows={{ sm: 1 }}
+						cellColumns={{ sm: "auto" }}
+						className={clsx(
+							"!relative !flex !flex-col !items-center !py-6 !text-center md:!items-start md:!py-[90px] md:!text-left"
+						)}
+						style={{ overflow: "visible" }}
+					>
+						<DreamLifter stroke="var(--ds-amber-800)" className="mb-6" />
+						<Text
+							color="gray-900"
+							size={{
+								xs: "1rem",
+								sm: "1rem",
+								smd: "1.25rem",
+								md: "1.25rem",
+								lg: "1.5rem",
+							}}
+							lineHeight={{
+								xs: "1.5rem",
+								sm: "1.5rem",
+								smd: "1.625rem",
+								md: "1.625rem",
+								lg: "2rem",
+							}}
+							weight={{
+								xs: "500",
+								sm: "500",
+								smd: "500",
+								md: "500",
+								xl: "500",
+							}}
+							letterSpacing={{
+								xs: "-0.32px",
+								sm: "-0.32px",
+								smd: "-0.4px",
+								md: "-0.4px",
+								lg: "-0.96px",
+							}}
+						>
+							<b style={{ color: "var(--ds-gray-1000)", fontWeight: 600 }}>
+								Growth.{" "}
+							</b>
+							Pengembangan keterampilan teknis dan profesional sesuai kebutuhan
+							industri.
+						</Text>
+					</Grid.Cell>
+					<Grid.Cell
+						gridRow={{ sm: "3 / span 1", smd: "1 / span 1" }}
+						gridColumn={{ sm: "auto" }}
+						cellRows={{ sm: 1 }}
+						cellColumns={{ sm: "auto" }}
+						className={clsx(
+							"!relative !flex !flex-col !items-center !py-6 !text-center md:!items-start md:!py-[90px] md:!text-left"
+						)}
+						style={{ overflow: "visible" }}
+					>
+						<Developers stroke="var(--ds-amber-800)" className="mb-6" />
+						<Text
+							color="gray-900"
+							size={{
+								xs: "1rem",
+								sm: "1rem",
+								smd: "1.25rem",
+								md: "1.25rem",
+								lg: "1.5rem",
+							}}
+							lineHeight={{
+								xs: "1.5rem",
+								sm: "1.5rem",
+								smd: "1.625rem",
+								md: "1.625rem",
+								lg: "2rem",
+							}}
+							weight={{
+								xs: "500",
+								sm: "500",
+								smd: "500",
+								md: "500",
+								xl: "500",
+							}}
+							letterSpacing={{
+								xs: "-0.32px",
+								sm: "-0.32px",
+								smd: "-0.4px",
+								md: "-0.4px",
+								lg: "-0.96px",
+							}}
+						>
+							<b style={{ color: "var(--ds-gray-1000)", fontWeight: 600 }}>
+								Connection.{" "}
+							</b>
+							Jaringan dengan mentor, profesional industri, dan komunitas
+							relevan.
+						</Text>
+					</Grid.Cell>
 				</Grid>
 				<Grid.System lazy_content>
 					<Grid

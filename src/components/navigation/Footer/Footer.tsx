@@ -59,7 +59,7 @@ export const Footer = ({
 						</div>
 					))}
 
-					<Link href="/" className={clsx(styles.link)}>
+					<Link href="/" className={clsx(styles.link, styles.logoHowbizz)}>
 						<Image
 							src="/static/howbizz.svg"
 							alt="howbizz-logotype Logo"

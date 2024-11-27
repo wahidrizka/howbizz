@@ -6,15 +6,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  svg {
-    shape-rendering: crispEdges;
-  }
-  svg circle, svg line, svg path, svg polygon, svg rect {
-    shape-rendering: geometricprecision;
-  }
-}
-
 @layer utilities {
   :root {
     --font-sans: "Geist","Geist Fallback",Arial,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;

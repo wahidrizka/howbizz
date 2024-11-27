@@ -5,11 +5,31 @@
   border-top: 1px solid var(--ds-gray-alpha-400);
   padding: 28px var(--geist-gap) var(--geist-gap);
 }
-
+@media (max-width: 960px) {
+  .footer {
+      padding: 20px var(--geist-gap) 16px;
+  }
+}
 .marketingFooterContainer {
   background: var(--geist-background);
   padding: 0 32px 90px !important;
   flex-direction: column;
+}
+
+@media (max-width: 1250px) {
+  .marketingFooterContainer {
+      padding-bottom: 32px !important;
+  }
+}
+@media (max-width: 750px) {
+  .marketingFooterContainer {
+      padding-bottom: 24px;
+  }
+}
+@media (max-width: 600px) {
+  .marketingFooterContainer {
+      padding: 16px 1rem 24px !important;
+  }
 }
 .dashboardFooter[data-variant='subtle'],
 .marketingFooterContainer[data-variant='subtle'] {
@@ -25,11 +45,22 @@
   justify-content: space-between;
   flex-direction: column;
 }
+@media (max-width: 960px) {
+  .footer nav {
+      width: 100%;
+  }
+}
 
 .marketingFooter {
   display: grid;
   grid-template-columns: repeat(4, 1fr) 80px;
   width: 100%;
+}
+@media (max-width: 750px) {
+  .marketingFooter {
+      grid-template-columns: repeat(2, minmax(auto, 240px));
+      gap: var(--geist-space-small);
+  }
 }
 
 .geistFootergroup .geistFooterHeader {
@@ -64,6 +95,21 @@
 .link[data-focus-visible-added] {
   outline: var(--ds-focus-color) auto 2px;
   outline-offset: 4px;
+}
+.logoHowbizz {
+  display: flex;
+  justify-self: end;
+  height: -moz-fit-content;
+  height: fit-content;
+  transform: translateY(4px);
+}
+@media (max-width: 750px) {
+  .logoHowbizz {
+      justify-self: start;
+      grid-column: 1 / 3;
+      grid-row: 1;
+      transform: translateY(0);
+  }
 }
 
 .statusRow {
