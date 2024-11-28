@@ -28,49 +28,46 @@ const Root = ({
 	const xsColumns = isResponsiveColumns
 		? getResponsiveValue(columns, "xs")
 		: undefined;
-	const xsRows = isResponsiveRows ? getResponsiveValue(rows, "xs") : undefined;
-	const xsHeight = isResponsiveHeight
-		? getResponsiveValue(height, "xs")
-		: undefined;
-
 	const smColumns = isResponsiveColumns
 		? getResponsiveValue(columns, "sm")
 		: undefined;
-	const smRows = isResponsiveRows ? getResponsiveValue(rows, "sm") : undefined;
-	const smHeight = isResponsiveHeight
-		? getResponsiveValue(height, "sm")
-		: undefined;
-
 	const smdColumns = isResponsiveColumns
 		? getResponsiveValue(columns, "smd")
 		: undefined;
+	const mdColumns = isResponsiveColumns
+		? getResponsiveValue(columns, "md")
+		: undefined;
+	const lgColumns = isResponsiveColumns
+		? getResponsiveValue(columns, "lg")
+		: undefined;
+	const xlColumns = isResponsiveColumns
+		? getResponsiveValue(columns, "xl")
+		: undefined;
+
+	const xsRows = isResponsiveRows ? getResponsiveValue(rows, "xs") : undefined;
+	const smRows = isResponsiveRows ? getResponsiveValue(rows, "sm") : undefined;
 	const smdRows = isResponsiveRows
 		? getResponsiveValue(rows, "smd")
+		: undefined;
+	const mdRows = isResponsiveRows ? getResponsiveValue(rows, "md") : undefined;
+	const lgRows = isResponsiveRows ? getResponsiveValue(rows, "lg") : undefined;
+	const xlRows = isResponsiveRows ? getResponsiveValue(rows, "xl") : undefined;
+
+	const xsHeight = isResponsiveHeight
+		? getResponsiveValue(height, "xs")
+		: undefined;
+	const smHeight = isResponsiveHeight
+		? getResponsiveValue(height, "sm")
 		: undefined;
 	const smdHeight = isResponsiveHeight
 		? getResponsiveValue(height, "smd")
 		: undefined;
-
-	const mdColumns = isResponsiveColumns
-		? getResponsiveValue(columns, "md")
-		: undefined;
-	const mdRows = isResponsiveRows ? getResponsiveValue(rows, "md") : undefined;
 	const mdHeight = isResponsiveHeight
 		? getResponsiveValue(height, "md")
 		: undefined;
-
-	const lgColumns = isResponsiveColumns
-		? getResponsiveValue(columns, "lg")
-		: undefined;
-	const lgRows = isResponsiveRows ? getResponsiveValue(rows, "lg") : undefined;
 	const lgHeight = isResponsiveHeight
 		? getResponsiveValue(height, "lg")
 		: undefined;
-
-	const xlColumns = isResponsiveColumns
-		? getResponsiveValue(columns, "xl")
-		: undefined;
-	const xlRows = isResponsiveRows ? getResponsiveValue(rows, "xl") : undefined;
 	const xlHeight = isResponsiveHeight
 		? getResponsiveValue(height, "xl")
 		: undefined;
@@ -87,28 +84,25 @@ const Root = ({
 		xsRows || smRows || smdRows || mdRows || lgRows || xlRows || 1;
 
 	const gridStyles = {
-		"--xs-grid-columns": xsColumns,
 		"--xs-grid-rows": xsRows,
-		"--xs-height": xsHeight,
-
-		"--sm-grid-columns": smColumns,
 		"--sm-grid-rows": smRows,
-		"--sm-height": smHeight,
-
-		"--smd-grid-columns": smdColumns,
 		"--smd-grid-rows": smdRows,
 		"--smd-height": smdHeight,
-
-		"--md-grid-columns": mdColumns,
 		"--md-grid-rows": mdRows,
-		"--md-height": mdHeight,
-
-		"--lg-grid-columns": lgColumns,
 		"--lg-grid-rows": lgRows,
-		"--lg-height": lgHeight,
-
-		"--xl-grid-columns": xlColumns,
 		"--xl-grid-rows": xlRows,
+
+		"--xs-grid-columns": xsColumns,
+		"--sm-grid-columns": smColumns,
+		"--smd-grid-columns": smdColumns,
+		"--md-grid-columns": mdColumns,
+		"--lg-grid-columns": lgColumns,
+		"--xl-grid-columns": xlColumns,
+
+		"--xs-height": xsHeight,
+		"--sm-height": smHeight,
+		"--md-height": mdHeight,
+		"--lg-height": lgHeight,
 		"--xl-height": xlHeight,
 
 		"--grid-columns": !isResponsiveColumns ? columns : undefined,
@@ -123,7 +117,7 @@ const Root = ({
 			data-grid
 		>
 			{children}
-			{!hasGuide && (
+			{hasGuide && (
 				<div aria-hidden className={clsx(styles.guides)} data-grid-guides>
 					{Array.from({ length: currentRows * currentColumns }).map(
 						(_, index) => {
@@ -198,8 +192,8 @@ const GridSystem = ({
 		"--guide-width": guideWidth || undefined,
 		"--horizontal-margin": horizontalMargin || undefined,
 		"--grid-system-width": gridSystemWidth || undefined,
-		"--guide-color": `var(--ds-${guideColor || "gray-400"})`,
-		"--cross-color": `var(--ds-${crossColor || "gray-600"})`,
+		"--guide-color": guideColor || undefined,
+		"--cross-color": crossColor || undefined,
 	} as React.CSSProperties;
 
 	if (lazy_content) {

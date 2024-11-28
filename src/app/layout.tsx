@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import { Footer, Navbar, ThemeProvider } from "@/components";
+import { ThemeProvider } from "@/components";
 import clsx from "clsx";
-import { useTheme } from "next-themes";
+import { LayoutContent } from "./layout-content";
+import { AppProvider } from "@/context/AppContext";
 
 export const metadata: Metadata = {
 	title: "Howbizz",
@@ -28,9 +29,9 @@ export default function RootLayout({
 		>
 			<body>
 				<ThemeProvider attribute="class" enableSystem={true}>
-					<Navbar></Navbar>
-					<div>{children}</div>
-					<Footer variant="subtle"></Footer>
+					<AppProvider>
+						<LayoutContent>{children}</LayoutContent>
+					</AppProvider>
 				</ThemeProvider>
 			</body>
 		</html>

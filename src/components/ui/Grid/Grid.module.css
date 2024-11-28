@@ -38,6 +38,18 @@
   margin-top: var(--guide-width);
   margin-left: var(--guide-width);
 }
+
+@media screen and (max-width: 400px) {
+  .gridSystem {
+      --horizontal-margin: 1rem;
+  }
+}
+@media screen and (min-width: 401px) and (max-width: 600px) {
+  .gridSystem {
+      --horizontal-margin: 1rem;
+  }
+}
+
 .gridSystemDebug {
   --debug-color-rgb: 255, 204, 109;
   --debug-guide-color: rgba(var(--debug-color-rgb), 0.7);
@@ -163,13 +175,22 @@
   display: var(--block-display);
   padding: var(--cell-padding);
 }
-@media screen and (min-width: 961px) {
+@media screen and (max-width: 400px) {
   .block {
-      --grid-row: var(--lg-grid-row, var(--md-grid-row, var(--smd-grid-row, var(--sm-grid-row))));
-      --grid-column: var(--lg-grid-column, var(--md-grid-column, var(--smd-grid-column, var(--sm-grid-column))));
-      --cell-rows: var(--lg-cell-rows, var(--md-cell-rows, var(--smd-cell-rows, var(--sm-cell-rows))));
-      --cell-columns: var(--lg-cell-columns, var(--md-cell-columns, var(--smd-cell-columns, var(--sm-cell-columns))));
-      --block-display: var(--smd-block-display);
+      --grid-row: var(--xs-grid-row, var(--sm-grid-row));
+      --grid-column: var(--xs-grid-column, var(--sm-grid-column));
+      --block-display: var(--xs-block-display, var(--sm-block-display));
+      --cell-rows: var(--xs-cell-rows, var(--sm-cell-rows));
+      --cell-columns: var(--xs-cell-columns, var(--sm-cell-columns));
+  }
+}
+@media screen and (min-width: 401px) and (max-width: 600px) {
+  .block {
+      --grid-row: var(--sm-grid-row);
+      --grid-column: var(--sm-grid-column);
+      --cell-rows: var(--sm-cell-rows);
+      --cell-columns: var(--sm-cell-columns);
+      --block-display: var(--sm-block-display);
   }
 }
 @media screen and (min-width: 601px) and (max-width: 768px) {
@@ -181,33 +202,16 @@
       --block-display: var(--smd-block-display);
   }
 }
-@media screen and (min-width: 401px) and (max-width: 600px) {
+@media screen and (min-width: 961px) {
   .block {
-      --grid-row: var(--sm-grid-row);
-      --grid-column: var(--sm-grid-column);
-      --cell-rows: var(--sm-cell-rows);
-      --cell-columns: var(--sm-cell-columns);
-      --block-display: var(--sm-block-display);
+      --grid-row: var(--lg-grid-row, var(--md-grid-row, var(--smd-grid-row, var(--sm-grid-row))));
+      --grid-column: var(--lg-grid-column, var(--md-grid-column, var(--smd-grid-column, var(--sm-grid-column))));
+      --cell-rows: var(--lg-cell-rows, var(--md-cell-rows, var(--smd-cell-rows, var(--sm-cell-rows))));
+      --cell-columns: var(--lg-cell-columns, var(--md-cell-columns, var(--smd-cell-columns, var(--sm-cell-columns))));
+      --block-display: var(--smd-block-display);
   }
 }
-@media screen and (min-width: 401px) and (max-width: 600px) {
-  .block {
-      --grid-row: var(--sm-grid-row);
-      --grid-column: var(--sm-grid-column);
-      --cell-rows: var(--sm-cell-rows);
-      --cell-columns: var(--sm-cell-columns);
-      --block-display: var(--sm-block-display);
-  }
-}
-@media screen and (max-width: 400px) {
-  .block {
-      --grid-row: var(--xs-grid-row, var(--sm-grid-row));
-      --grid-column: var(--xs-grid-column, var(--sm-grid-column));
-      --block-display: var(--xs-block-display, var(--sm-block-display));
-      --cell-rows: var(--xs-cell-rows, var(--sm-cell-rows));
-      --cell-columns: var(--xs-cell-columns, var(--sm-cell-columns));
-  }
-}
+
 .block>div {
   height: 100%;
 }
