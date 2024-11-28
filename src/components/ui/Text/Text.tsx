@@ -87,6 +87,18 @@ export const Text: React.FC<PropsWithChildren<TextProps>> = ({
 	const isResponsiveLetterSpacing = typeof letterSpacing === "object";
 	const isResponsiveWeight = typeof weight === "object";
 
+	// xsmall
+	const xsSize = isResponsiveSize ? getResponsiveValue(size, "xs") : undefined;
+	const xsLineHeight = isResponsiveLineHeight
+		? getResponsiveValue(lineHeight, "xs")
+		: undefined;
+	const xsWeight = isResponsiveWeight
+		? getResponsiveValue(weight, "xs")
+		: undefined;
+	const xsLetterSpacing = isResponsiveLetterSpacing
+		? getResponsiveValue(letterSpacing, "xs")
+		: undefined;
+
 	// small
 	const smSize = isResponsiveSize ? getResponsiveValue(size, "sm") : undefined;
 	const smLineHeight = isResponsiveLineHeight
@@ -97,6 +109,20 @@ export const Text: React.FC<PropsWithChildren<TextProps>> = ({
 		: undefined;
 	const smLetterSpacing = isResponsiveLetterSpacing
 		? getResponsiveValue(letterSpacing, "sm")
+		: undefined;
+
+	// smd
+	const smdSize = isResponsiveSize
+		? getResponsiveValue(size, "smd")
+		: undefined;
+	const smdLineHeight = isResponsiveLineHeight
+		? getResponsiveValue(lineHeight, "smd")
+		: undefined;
+	const smdWeight = isResponsiveWeight
+		? getResponsiveValue(weight, "smd")
+		: undefined;
+	const smdLetterSpacing = isResponsiveLetterSpacing
+		? getResponsiveValue(letterSpacing, "smd")
 		: undefined;
 
 	// medium
@@ -125,11 +151,20 @@ export const Text: React.FC<PropsWithChildren<TextProps>> = ({
 
 	const textWrapperStyles = {
 		"--text-color": `var(--ds-${color || "gray-1000"})`,
+		"--xs-text-size": xsSize,
+		"--xs-text-line-height": xsLineHeight,
+		"--xs-text-weight": xsWeight,
+		"--xs-text-letter-spacing": xsLetterSpacing,
 
 		"--sm-text-size": smSize,
 		"--sm-text-line-height": smLineHeight,
 		"--sm-text-weight": smWeight,
 		"--sm-text-letter-spacing": smLetterSpacing,
+
+		"--smd-text-size": smdSize,
+		"--smd-text-line-height": smdLineHeight,
+		"--smd-text-weight": smdWeight,
+		"--smd-text-letter-spacing": smdLetterSpacing,
 
 		"--md-text-size": mdSize,
 		"--md-text-line-height": mdLineHeight,

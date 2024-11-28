@@ -4,8 +4,13 @@ import clsx from "clsx";
 import styles from "./Grid.module.css";
 import { ResponsiveMap } from "@/types";
 import { getResponsiveValue } from "@/utils";
+import { useMediaQuery } from "react-responsive";
+
+export const GridTags = ["section", "div"] as const;
+export const defaultGridTag = GridTags[0];
 
 export type GridType = {
+	as?: (typeof GridTags)[number];
 	columns?: number | ResponsiveMap<number>;
 	rows?: number | ResponsiveMap<number>;
 	height?: number | string | ResponsiveMap<number | string>;
@@ -13,6 +18,7 @@ export type GridType = {
 } & React.HTMLAttributes<HTMLElement>;
 
 const Root = ({
+	as = defaultGridTag,
 	columns,
 	rows,
 	height,
@@ -21,6 +27,15 @@ const Root = ({
 	className,
 	style,
 }: GridType) => {
+	const [isClient, setIsClient] = React.useState(false);
+
+	const Component = as;
+
+	// Wait until the component is mounted to perform client-side rendering
+	React.useEffect(() => {
+		setIsClient(true);
+	}, []);
+
 	const isResponsiveColumns = typeof columns === "object";
 	const isResponsiveRows = typeof rows === "object";
 	const isResponsiveHeight = typeof height === "object";
@@ -72,16 +87,40 @@ const Root = ({
 		? getResponsiveValue(height, "xl")
 		: undefined;
 
+	// Use media queries only on the client side
+	const isXsQuery = useMediaQuery({ query: "(max-width: 400px)" });
+	const isSmQuery = useMediaQuery({
+		query: "(min-width: 401px) and (max-width: 600px)",
+	});
+	const isMdQuery = useMediaQuery({
+		query: "(min-width: 769px) and (max-width: 960px)",
+	});
+	const isLgQuery = useMediaQuery({ query: "(min-width: 961px)" });
+
+	const isXs = isClient && isXsQuery;
+	const isSm = isClient && isSmQuery;
+	const isMd = isClient && isMdQuery;
+	const isLg = isClient && isLgQuery;
+
+	const currentScreen = isLg
+		? "lg"
+		: isMd
+		? "md"
+		: isSm
+		? "sm"
+		: isXs
+		? "xs"
+		: "xs";
+
 	const currentColumns =
-		xsColumns ||
-		smColumns ||
-		smdColumns ||
-		mdColumns ||
-		lgColumns ||
-		xlColumns ||
-		1;
+		columns && typeof columns === "object"
+			? getResponsiveValue(columns, currentScreen) || 1
+			: columns || 1;
+
 	const currentRows =
-		xsRows || smRows || smdRows || mdRows || lgRows || xlRows || 1;
+		rows && typeof rows === "object"
+			? getResponsiveValue(rows, currentScreen) || 1
+			: rows || 1;
 
 	const gridStyles = {
 		"--xs-grid-rows": xsRows,
@@ -91,6 +130,7 @@ const Root = ({
 		"--md-grid-rows": mdRows,
 		"--lg-grid-rows": lgRows,
 		"--xl-grid-rows": xlRows,
+		"--grid-rows": !isResponsiveRows ? rows : undefined,
 
 		"--xs-grid-columns": xsColumns,
 		"--sm-grid-columns": smColumns,
@@ -98,20 +138,18 @@ const Root = ({
 		"--md-grid-columns": mdColumns,
 		"--lg-grid-columns": lgColumns,
 		"--xl-grid-columns": xlColumns,
+		"--grid-columns": !isResponsiveColumns ? columns : undefined,
 
 		"--xs-height": xsHeight,
 		"--sm-height": smHeight,
 		"--md-height": mdHeight,
 		"--lg-height": lgHeight,
 		"--xl-height": xlHeight,
-
-		"--grid-columns": !isResponsiveColumns ? columns : undefined,
-		"--grid-rows": !isResponsiveRows ? rows : undefined,
 		"--height": !isResponsiveHeight ? height : undefined,
 	} as React.CSSProperties;
 
 	return (
-		<section
+		<Component
 			className={clsx(styles.grid, className)}
 			style={{ ...gridStyles, ...style }}
 			data-grid
@@ -121,8 +159,8 @@ const Root = ({
 				<div aria-hidden className={clsx(styles.guides)} data-grid-guides>
 					{Array.from({ length: currentRows * currentColumns }).map(
 						(_, index) => {
-							const x = Math.floor(index / currentColumns) + 1;
-							const y = (index % currentColumns) + 1;
+							const x = (index % currentColumns) + 1;
+							const y = Math.floor(index / currentColumns) + 1;
 							return (
 								<GridGuide
 									key={`${x}-${y}`}
@@ -136,7 +174,7 @@ const Root = ({
 					)}
 				</div>
 			)}
-		</section>
+		</Component>
 	);
 };
 
@@ -394,93 +432,94 @@ const GridBlock = ({
 	const xsGridRow = isResponsiveGridRow
 		? getResponsiveValue(gridRow, "xs")
 		: undefined;
-	const xsGridColumn = isResponsiveGridColumn
-		? getResponsiveValue(gridColumn, "xs")
-		: undefined;
-	const xsCellRows = isResponsiveCellRows
-		? getResponsiveValue(cellRows, "xs")
-		: undefined;
-	const xsCellColumns = isResponsiveCellColumns
-		? getResponsiveValue(cellColumns, "xs")
-		: undefined;
-	const xsCellDisplay = isResponsiveCellDisplay
-		? getResponsiveValue(cellDisplay, "xs")
-		: undefined;
-	const xsCellPadding = isResponsiveCellPadding
-		? getResponsiveValue(cellPadding, "xs")
-		: undefined;
-
 	const smGridRow = isResponsiveGridRow
 		? getResponsiveValue(gridRow, "sm")
+		: undefined;
+	const smdGridRow = isResponsiveGridRow
+		? getResponsiveValue(gridRow, "smd")
+		: undefined;
+	const mdGridRow = isResponsiveGridRow
+		? getResponsiveValue(gridRow, "md")
+		: undefined;
+	const lgGridRow = isResponsiveGridRow
+		? getResponsiveValue(gridRow, "lg")
+		: undefined;
+
+	const xsGridColumn = isResponsiveGridColumn
+		? getResponsiveValue(gridColumn, "xs")
 		: undefined;
 	const smGridColumn = isResponsiveGridColumn
 		? getResponsiveValue(gridColumn, "sm")
 		: undefined;
-	const smCellRows = isResponsiveCellRows
-		? getResponsiveValue(cellRows, "sm")
-		: undefined;
-	const smCellColumns = isResponsiveCellColumns
-		? getResponsiveValue(cellColumns, "sm")
-		: undefined;
-	const smCellDisplay = isResponsiveCellDisplay
-		? getResponsiveValue(cellDisplay, "sm")
-		: undefined;
-	const smCellPadding = isResponsiveCellPadding
-		? getResponsiveValue(cellPadding, "sm")
-		: undefined;
-
-	const smdGridRow = isResponsiveGridRow
-		? getResponsiveValue(gridRow, "smd")
-		: undefined;
 	const smdGridColumn = isResponsiveGridColumn
 		? getResponsiveValue(gridColumn, "smd")
-		: undefined;
-	const smdCellRows = isResponsiveCellRows
-		? getResponsiveValue(cellRows, "smd")
-		: undefined;
-	const smdCellColumns = isResponsiveCellColumns
-		? getResponsiveValue(cellColumns, "smd")
-		: undefined;
-	const smdCellDisplay = isResponsiveCellDisplay
-		? getResponsiveValue(cellDisplay, "smd")
-		: undefined;
-	const smdCellPadding = isResponsiveCellPadding
-		? getResponsiveValue(cellPadding, "smd")
-		: undefined;
-
-	const mdGridRow = isResponsiveGridRow
-		? getResponsiveValue(gridRow, "md")
 		: undefined;
 	const mdGridColumn = isResponsiveGridColumn
 		? getResponsiveValue(gridColumn, "md")
 		: undefined;
-	const mdCellRows = isResponsiveCellRows
-		? getResponsiveValue(cellRows, "md")
-		: undefined;
-	const mdCellColumns = isResponsiveCellColumns
-		? getResponsiveValue(cellColumns, "md")
-		: undefined;
-	const mdCellDisplay = isResponsiveCellDisplay
-		? getResponsiveValue(cellDisplay, "md")
-		: undefined;
-	const mdCellPadding = isResponsiveCellPadding
-		? getResponsiveValue(cellPadding, "md")
-		: undefined;
-
-	const lgGridRow = isResponsiveGridRow
-		? getResponsiveValue(gridRow, "lg")
-		: undefined;
 	const lgGridColumn = isResponsiveGridColumn
 		? getResponsiveValue(gridColumn, "lg")
+		: undefined;
+
+	const xsCellRows = isResponsiveCellRows
+		? getResponsiveValue(cellRows, "xs")
+		: undefined;
+	const smCellRows = isResponsiveCellRows
+		? getResponsiveValue(cellRows, "sm")
+		: undefined;
+	const smdCellRows = isResponsiveCellRows
+		? getResponsiveValue(cellRows, "smd")
+		: undefined;
+	const mdCellRows = isResponsiveCellRows
+		? getResponsiveValue(cellRows, "md")
 		: undefined;
 	const lgCellRows = isResponsiveCellRows
 		? getResponsiveValue(cellRows, "lg")
 		: undefined;
+
+	const xsCellColumns = isResponsiveCellColumns
+		? getResponsiveValue(cellColumns, "xs")
+		: undefined;
+	const smCellColumns = isResponsiveCellColumns
+		? getResponsiveValue(cellColumns, "sm")
+		: undefined;
+	const smdCellColumns = isResponsiveCellColumns
+		? getResponsiveValue(cellColumns, "smd")
+		: undefined;
+	const mdCellColumns = isResponsiveCellColumns
+		? getResponsiveValue(cellColumns, "md")
+		: undefined;
 	const lgCellColumns = isResponsiveCellColumns
 		? getResponsiveValue(cellColumns, "lg")
 		: undefined;
+
+	const xsCellDisplay = isResponsiveCellDisplay
+		? getResponsiveValue(cellDisplay, "xs")
+		: undefined;
+	const smCellDisplay = isResponsiveCellDisplay
+		? getResponsiveValue(cellDisplay, "sm")
+		: undefined;
+	const smdCellDisplay = isResponsiveCellDisplay
+		? getResponsiveValue(cellDisplay, "smd")
+		: undefined;
+	const mdCellDisplay = isResponsiveCellDisplay
+		? getResponsiveValue(cellDisplay, "md")
+		: undefined;
 	const lgCellDisplay = isResponsiveCellDisplay
 		? getResponsiveValue(cellDisplay, "lg")
+		: undefined;
+
+	const xsCellPadding = isResponsiveCellPadding
+		? getResponsiveValue(cellPadding, "xs")
+		: undefined;
+	const smCellPadding = isResponsiveCellPadding
+		? getResponsiveValue(cellPadding, "sm")
+		: undefined;
+	const smdCellPadding = isResponsiveCellPadding
+		? getResponsiveValue(cellPadding, "smd")
+		: undefined;
+	const mdCellPadding = isResponsiveCellPadding
+		? getResponsiveValue(cellPadding, "md")
 		: undefined;
 	const lgCellPadding = isResponsiveCellPadding
 		? getResponsiveValue(cellPadding, "lg")
@@ -491,38 +530,39 @@ const GridBlock = ({
 		"--cell-padding": !isResponsiveCellPadding ? cellPadding : undefined,
 
 		"--xs-grid-row": xsGridRow,
-		"--xs-grid-column": xsGridColumn,
-		"--xs-cell-rows": xsCellRows,
-		"--xs-cell-columns": xsCellColumns,
-		"--xs-cell-display": xsCellDisplay,
-		"--xs-cell-padding": xsCellPadding,
-
 		"--sm-grid-row": isResponsiveGridRow ? smGridRow : gridRow,
-		"--sm-grid-column": isResponsiveGridColumn ? smGridColumn : gridColumn,
-		"--sm-cell-rows": isResponsiveCellRows ? smCellRows : cellRows,
-		"--sm-cell-columns": isResponsiveCellColumns ? smCellColumns : cellColumns,
-		"--sm-cell-display": smCellDisplay,
-		"--sm-cell-padding": smCellPadding,
-
 		"--smd-grid-row": smdGridRow,
-		"--smd-grid-column": smdGridColumn,
-		"--smd-cell-rows": smdCellRows,
-		"--smd-cell-columns": smdCellColumns,
-		"--smd-cell-display": smdCellDisplay,
-		"--smd-cell-padding": smdCellPadding,
-
 		"--md-grid-row": mdGridRow,
-		"--md-grid-column": mdGridColumn,
-		"--md-cell-rows": mdCellRows,
-		"--md-cell-columns": mdCellColumns,
-		"--md-cell-display": mdCellDisplay,
-		"--md-cell-padding": mdCellPadding,
-
 		"--lg-grid-row": lgGridRow,
+
+		"--xs-grid-column": xsGridColumn,
+		"--sm-grid-column": isResponsiveGridColumn ? smGridColumn : gridColumn,
+		"--smd-grid-column": smdGridColumn,
+		"--md-grid-column": mdGridColumn,
 		"--lg-grid-column": lgGridColumn,
+
+		"--xs-cell-rows": xsCellRows,
+		"--sm-cell-rows": isResponsiveCellRows ? smCellRows : cellRows,
+		"--smd-cell-rows": smdCellRows,
+		"--md-cell-rows": mdCellRows,
 		"--lg-cell-rows": lgCellRows,
+
+		"--xs-cell-columns": xsCellColumns,
+		"--sm-cell-columns": isResponsiveCellColumns ? smCellColumns : cellColumns,
+		"--smd-cell-columns": smdCellColumns,
+		"--md-cell-columns": mdCellColumns,
 		"--lg-cell-columns": lgCellColumns,
+
+		"--xs-cell-display": xsCellDisplay,
+		"--sm-cell-display": smCellDisplay,
+		"--smd-cell-display": smdCellDisplay,
+		"--md-cell-display": mdCellDisplay,
 		"--lg-cell-display": lgCellDisplay,
+
+		"--xs-cell-padding": xsCellPadding,
+		"--sm-cell-padding": smCellPadding,
+		"--smd-cell-padding": smdCellPadding,
+		"--md-cell-padding": mdCellPadding,
 		"--lg-cell-padding": lgCellPadding,
 	} as React.CSSProperties;
 
@@ -557,8 +597,8 @@ const GridGuide = ({
 		"--y": y,
 		borderLeft: borderLeft,
 		borderTop: borderTop,
-		borderRight: x === rows ? "none" : undefined,
-		borderBottom: y === columns ? "none" : undefined,
+		borderRight: x === columns ? "none" : undefined,
+		borderBottom: y === rows ? "none" : undefined,
 	};
 	return <div className={clsx(styles.guide)} style={{ ...guidestyles }}></div>;
 };
