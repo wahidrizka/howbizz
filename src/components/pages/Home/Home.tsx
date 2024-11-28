@@ -250,6 +250,7 @@ export const Home = () => {
 						</Text>
 					</Grid.Cell>
 				</Grid>
+
 				<Grid.System lazy_content>
 					<Grid
 						rows={1}
