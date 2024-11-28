@@ -1,0 +1,39 @@
+.withinScreen {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - var(--vh100-offset));
+}
+main.container, section.wrapper {
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -moz-box-orient: vertical;
+  -moz-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  z-index: 1;
+}
+main.container {
+  padding: var(--geist-gap-double) 0;
+}
+section.wrapper {
+  line-height: 1.6;
+  max-width: 100%;
+  padding: 0 20px;
+  text-align: center;
+}
