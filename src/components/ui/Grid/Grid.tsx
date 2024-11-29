@@ -156,7 +156,11 @@ const Root = ({
 		>
 			{children}
 			{hasGuide && (
-				<div aria-hidden className={clsx(styles.guides)} data-grid-guides>
+				<div
+					aria-hidden="true"
+					className={clsx(styles.guides)}
+					data-grid-guides
+				>
 					{Array.from({ length: currentRows * currentColumns }).map(
 						(_, index) => {
 							const x = (index % currentColumns) + 1;
@@ -600,7 +604,13 @@ const GridGuide = ({
 		borderRight: x === columns ? "none" : undefined,
 		borderBottom: y === rows ? "none" : undefined,
 	};
-	return <div className={clsx(styles.guide)} style={{ ...guidestyles }}></div>;
+	return (
+		<div
+			aria-hidden="true"
+			className={clsx(styles.guide)}
+			style={{ ...guidestyles }}
+		></div>
+	);
 };
 
 export const Grid = Object.assign(Root, {

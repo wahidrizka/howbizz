@@ -84,6 +84,7 @@ export const Stack: React.FC<StackProps> = ({
 
 	// Styles
 	const stackStyles = {
+		...style,
 		"--stack-flex": flex,
 		"--stack-direction":
 			typeof direction === "object" ? DefaultStackDirection : direction,
@@ -105,9 +106,6 @@ export const Stack: React.FC<StackProps> = ({
 		// Fallback to global value if not responsive
 		"--stack-padding": !isResponsivePadding ? padding : undefined,
 		"--stack-gap": !isResponsiveGap ? gap : undefined,
-
-		// Allow additional inline styles
-		...style,
 	} as React.CSSProperties;
 
 	return (
