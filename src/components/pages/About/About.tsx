@@ -122,7 +122,9 @@ export const About = () => {
 						columns={{ sm: 2, lg: 3 }}
 						height={{ sm: "var(--grid-divider-gap)" }}
 						style={{ borderBottom: "none" }}
-					></Grid>
+					>
+						<Grid.Cell></Grid.Cell>
+					</Grid>
 				</Grid.System>
 			</Grid.System>
 		</Stack>
