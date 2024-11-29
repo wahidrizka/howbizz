@@ -8,7 +8,7 @@ export const LayoutContent = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<>
 			{!is404 && <Navbar />}
-			<div>{children}</div>
+			{children}
 			{!is404 && <Footer variant="subtle" />}
 		</>
 	);

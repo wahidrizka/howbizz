@@ -4,7 +4,6 @@ import clsx from "clsx";
 import styles from "./Grid.module.css";
 import { ResponsiveMap } from "@/types";
 import { getResponsiveValue } from "@/utils";
-import { useMediaQuery } from "react-responsive";
 
 export const GridTags = ["section", "div"] as const;
 export const defaultGridTag = GridTags[0];
@@ -27,14 +26,7 @@ const Root = ({
 	className,
 	style,
 }: GridType) => {
-	const [isClient, setIsClient] = React.useState(false);
-
 	const Component = as;
-
-	// Wait until the component is mounted to perform client-side rendering
-	React.useEffect(() => {
-		setIsClient(true);
-	}, []);
 
 	const isResponsiveColumns = typeof columns === "object";
 	const isResponsiveRows = typeof rows === "object";
@@ -87,40 +79,16 @@ const Root = ({
 		? getResponsiveValue(height, "xl")
 		: undefined;
 
-	// Use media queries only on the client side
-	const isXsQuery = useMediaQuery({ query: "(max-width: 400px)" });
-	const isSmQuery = useMediaQuery({
-		query: "(min-width: 401px) and (max-width: 600px)",
-	});
-	const isMdQuery = useMediaQuery({
-		query: "(min-width: 769px) and (max-width: 960px)",
-	});
-	const isLgQuery = useMediaQuery({ query: "(min-width: 961px)" });
-
-	const isXs = isClient && isXsQuery;
-	const isSm = isClient && isSmQuery;
-	const isMd = isClient && isMdQuery;
-	const isLg = isClient && isLgQuery;
-
-	const currentScreen = isLg
-		? "lg"
-		: isMd
-		? "md"
-		: isSm
-		? "sm"
-		: isXs
-		? "xs"
-		: "xs";
-
 	const currentColumns =
-		columns && typeof columns === "object"
-			? getResponsiveValue(columns, currentScreen) || 1
-			: columns || 1;
-
+		xlColumns ||
+		lgColumns ||
+		mdColumns ||
+		smdColumns ||
+		smColumns ||
+		xsColumns ||
+		1;
 	const currentRows =
-		rows && typeof rows === "object"
-			? getResponsiveValue(rows, currentScreen) || 1
-			: rows || 1;
+		xlRows || lgRows || mdRows || smdRows || smRows || xsRows || 1;
 
 	const gridStyles = {
 		"--xs-grid-rows": xsRows,
@@ -163,8 +131,8 @@ const Root = ({
 				>
 					{Array.from({ length: currentRows * currentColumns }).map(
 						(_, index) => {
-							const x = (index % currentColumns) + 1;
 							const y = Math.floor(index / currentColumns) + 1;
+							const x = (index % currentColumns) + 1;
 							return (
 								<GridGuide
 									key={`${x}-${y}`}

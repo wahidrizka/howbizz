@@ -109,6 +109,7 @@ export const About = () => {
 
 				{/* Marketing Section About, Vision, Mission */}
 				<Grid
+					as="div"
 					hasGuide={false}
 					rows={1}
 					columns={{ sm: 2, lg: 3 }}
@@ -122,11 +123,7 @@ export const About = () => {
 						columns={{ sm: 2, lg: 3 }}
 						height={{ sm: "var(--grid-divider-gap)" }}
 						style={{ borderBottom: "none" }}
-					>
-						<Grid.Cell></Grid.Cell>
-						<Grid.Cell></Grid.Cell>
-						<Grid.Cell></Grid.Cell>
-					</Grid>
+					></Grid>
 				</Grid.System>
 			</Grid.System>
 		</Stack>
