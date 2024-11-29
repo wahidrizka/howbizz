@@ -1,5 +1,4 @@
 "use client";
-import { Footer, Navbar } from "@/components";
 import { useAppContext } from "@/context/AppContext";
 
 export const LayoutContent = ({ children }: { children: React.ReactNode }) => {
@@ -7,9 +6,9 @@ export const LayoutContent = ({ children }: { children: React.ReactNode }) => {
 
 	return (
 		<>
-			{!is404 && <Navbar />}
+			{/* {!is404 && <Navbar />} */}
 			{children}
-			{!is404 && <Footer variant="subtle" />}
+			{/* {!is404 && <Footer variant="subtle" />} */}
 		</>
 	);
 };
