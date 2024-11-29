@@ -106,6 +106,24 @@ export const About = () => {
 						</Stack>
 					</Grid.Cell>
 				</Grid>
+
+				{/* Marketing Section About, Vision, Mission */}
+				<Grid
+					hasGuide={false}
+					rows={1}
+					columns={{ sm: 2, lg: 3 }}
+					height={{ sm: "16px" }}
+				></Grid>
+
+				<Grid.System lazy_content>
+					{/* Marketing Section Alternating Feature Column */}
+					<Grid
+						rows={1}
+						columns={{ sm: 2, lg: 3 }}
+						height={{ sm: "var(--grid-divider-gap)" }}
+						style={{ borderBottom: "none" }}
+					></Grid>
+				</Grid.System>
 			</Grid.System>
 		</Stack>
 	);
