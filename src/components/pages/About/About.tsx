@@ -124,6 +124,8 @@ export const About = () => {
 						style={{ borderBottom: "none" }}
 					>
 						<Grid.Cell></Grid.Cell>
+						<Grid.Cell></Grid.Cell>
+						<Grid.Cell></Grid.Cell>
 					</Grid>
 				</Grid.System>
 			</Grid.System>
