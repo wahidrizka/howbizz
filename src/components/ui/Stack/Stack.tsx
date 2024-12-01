@@ -1,8 +1,9 @@
+"use client";
 import React from "react";
 import clsx from "clsx";
 import styles from "./Stack.module.css";
 import { ResponsiveMap } from "@/types";
-import { generateResponsiveStyles } from "@/utils";
+import { generateResponsiveComponentStyles } from "@/utils";
 
 const StackFlex = ["initial", "1 1 0%", "1 1 auto", "none"] as const;
 const StackDirection = ["column", "row"] as const;
@@ -30,12 +31,12 @@ export const Stack: React.FC<StackType> = ({
 	style, 
 }) => {
 	const stackStyles = {
-		...generateResponsiveStyles("flex", flex),
-		...generateResponsiveStyles("direction", direction),
-		...generateResponsiveStyles("align", align),
-		...generateResponsiveStyles("justify", justify),
-		...generateResponsiveStyles("padding", padding),
-		...generateResponsiveStyles("gap", gap),
+		...generateResponsiveComponentStyles("stack", "flex", flex),
+		...generateResponsiveComponentStyles("stack", "direction", direction),
+		...generateResponsiveComponentStyles("stack", "align", align),
+		...generateResponsiveComponentStyles("stack", "justify", justify),
+		...generateResponsiveComponentStyles("stack", "padding", padding),
+		...generateResponsiveComponentStyles("stack", "gap", gap),
 	} as React.CSSProperties;
 
 	return (

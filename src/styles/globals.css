@@ -5,6 +5,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  *, :before, :after {
+    box-sizing: border-box;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+  }
+}
+
 @layer utilities {
   :root {
     --font-sans: "Geist","Geist Fallback",Arial,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
