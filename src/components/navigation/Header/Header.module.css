@@ -87,3 +87,33 @@
       visibility: none;
   }
 }
+
+@media (max-width: 1150px) {
+  #header-content {
+      display: none;
+  }
+}
+
+.right-section_content {
+  opacity: 0;
+}
+
+.right-section_loaded {
+  animation: right-section_fadeIn .5s forwards;
+}
+
+@keyframes right-section_fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
+
+.right-section_nonPrimaryContent {
+  flex-direction: inherit;
+  align-items: inherit;
+  gap: inherit;
+  transition: all .3s ease-in-out;
+}
