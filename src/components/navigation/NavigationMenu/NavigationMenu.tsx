@@ -70,6 +70,7 @@ export const NavigationMenu: React.FC<NavigationTypes> = ({
         className={clsx(styles.tabsHighlight)}
         style={{ ...highlightStyle }}
        />
+
       <div style={{ position: "relative" }}>
         <ul data-orientation={orientation} className={clsx(styles.list)}>
           {links.map((item, index) => (
@@ -80,6 +81,11 @@ export const NavigationMenu: React.FC<NavigationTypes> = ({
           ))}
         </ul>
       </div>
+
+      <div 
+        className={clsx(styles.viewportPosition)} 
+        style={{ transform: "translateX(var(--left-offset))" }}
+      />
     </nav>
   )
 };

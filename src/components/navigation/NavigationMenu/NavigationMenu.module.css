@@ -23,7 +23,7 @@
   border-radius: 9999px;
   transition: .25s ease;
   transition-property: width, transform, opacity;
-  background: var(--ds-gray-200);
+  background: var(--ds-amber-200);
 }
 
 .list {
@@ -60,7 +60,32 @@
 }
 
 .link[data-active=open], .menuTrigger[data-active=open] {
-  background: var(--ds-gray-200);
-  color: var(--ds-gray-1000) !important;
+  background: var(--ds-amber-200);
+  color: var(--ds-amber-800) !important;
   transition-duration: 0s;
+}
+
+.link:hover, .menuTrigger:hover {
+  color: var(--ds-amber-800);
+}
+
+.viewportPosition {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 85%;
+  left: 0;
+  perspective: 2000px;
+}
+
+.viewportPosition::after {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  top: calc(var(--indicator-height) - 6px);
+  background: var(--ds-blue-600);
+  opacity: 0;
+  border-radius: 12px;
+  z-index: -1;
+  transition: opacity .2s ease;
 }
