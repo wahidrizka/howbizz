@@ -24,8 +24,8 @@ export const Stack: React.FC<StackType> = ({
 	direction = StackDirection[0], 
 	align = StackAlign[0], 
 	justify = StackJustify[1], 
-	padding = "0", 
-	gap = "0", 
+	padding = "0px", 
+	gap = "0px", 
 	children,
 	className,
 	style, 
@@ -42,6 +42,7 @@ export const Stack: React.FC<StackType> = ({
 	return (
 		<div
 			className={clsx(styles.stack, className)}
+			data-version="v1"
 			style={{...style, ...stackStyles }}
 		>
 			{children}
