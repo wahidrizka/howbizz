@@ -4,7 +4,6 @@ import clsx from "clsx";
 import styles from "./Stack.module.css";
 import { ResponsiveMap } from "@/types";
 import { generateResponsiveComponentStyles } from "@/utils";
-import getConfig from "next/config";
 
 const StackFlex = ["initial", "1 1 0%", "1 1 auto", "none"] as const;
 const StackDirection = ["column", "row"] as const;
@@ -31,7 +30,6 @@ export const Stack: React.FC<StackType> = ({
 	className,
 	style, 
 }) => {
-	const APP_VERSION = process.env.npm_package_version;
 	const stackStyles = {
 		...generateResponsiveComponentStyles("stack", "flex", flex),
 		...generateResponsiveComponentStyles("stack", "direction", direction),
@@ -44,7 +42,7 @@ export const Stack: React.FC<StackType> = ({
 	return (
 		<div
 			className={clsx(styles.stack, className)}
-			data-version={`v${APP_VERSION}`}
+			data-version={`v${process.env.npm_package_version}`}
 			style={{...style, ...stackStyles }}
 		>
 			{children}
