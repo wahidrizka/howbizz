@@ -108,6 +108,15 @@
   --themed-border: var(--themed-hover-bg, var(--ds-gray-200)) !important;
 }
 
+.button.loading[data-howbizz-button],
+.button[aria-disabled=true],
+.button[disabled][data-howbizz-button] {
+  background: var(--ds-gray-100);
+  color: var(--ds-gray-700);
+  --themed-border: var(--ds-gray-400) !important;
+  cursor: not-allowed;
+}
+
 /* Button's shape */
 .button svg {
   flex-shrink: 0;
@@ -167,12 +176,21 @@
   font-size: 16px;
 }
 
+.rounded.large[data-howbizz-button],
+.rounded[data-howbizz-button] {
+  border-radius: 100px;
+}
+
 /* Button's variant */
 .secondary[data-howbizz-button] {
   --themed-bg: var(--ds-background-100);
   --themed-hover-bg: var(--ds-gray-alpha-200);
   --themed-fg: var(--ds-gray-1000);
   --themed-border: var(--ds-gray-alpha-400);
+}
+
+.secondary[data-howbizz-button].shadow[data-howbizz-button] {
+  box-shadow: var(--ds-shadow-border-small);
 }
 
 .tertiary[data-howbizz-button] {

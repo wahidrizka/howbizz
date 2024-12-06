@@ -2,6 +2,7 @@ import React from "react";
 import Link, { LinkProps } from "next/link";
 import clsx from "clsx";
 import styles from './Button.module.css';
+import { Spinner } from "..";
 
 type ButtonBaseTypes = {
   as?: "button" | "a";
@@ -12,6 +13,7 @@ type ButtonBaseTypes = {
   shape?: "rounded" | "square" | "circle" | undefined;
   leadingVisual?: React.ReactNode;
   trailingVisual?: React.ReactNode;
+  shadow?: boolean;
   loading?: boolean;
   children: React.ReactNode;
 };
@@ -42,6 +44,7 @@ export const Button: React.FC<ButtonPropTypes> = (props) => {
     shape,
     leadingVisual,
     trailingVisual,
+    shadow,
     loading,
     children,
     className,
@@ -64,13 +67,18 @@ export const Button: React.FC<ButtonPropTypes> = (props) => {
     shape && shape !== "rounded" && styles.shape,
     shape === "rounded" && styles.rounded,
     shape === "circle" && styles.circle,
+    shadow && styles.shadow,
+    loading && styles.loading,
     active && styles.invert,
     isHovered && styles.invert,
+    className
   );
 
   const buttonStyles = {
     "---geist-icon-size": "16px",
   } as React.CSSProperties;
+
+  const spinnerSize = size === "large" ? 24 : 16;
 
   if (as === "a" && "href" in props) {
     const {...linkProps} = rest as LinkButtonTypes;
@@ -89,6 +97,12 @@ export const Button: React.FC<ButtonPropTypes> = (props) => {
         className={buttonClasses}
         style={{ ...buttonStyles, ...style }}
       >
+        {loading && (
+          <div className={styles.leadingVisual}>
+            <Spinner size={spinnerSize} />
+          </div>  
+        )}
+
         {/* leading position of icon inside the Button */}
         {leadingVisual && (
           <span className={styles.leadingVisual}>{leadingVisual}</span>
@@ -125,6 +139,13 @@ export const Button: React.FC<ButtonPropTypes> = (props) => {
       className={buttonClasses}
       style={{ ...buttonStyles, ...style }}
     >
+
+      {loading && (
+        <div className={styles.leadingVisual}>
+          <Spinner size={spinnerSize} />
+        </div>
+      )}
+
       {/* leading position of icon inside the Button */}
       {leadingVisual && (
         <span className={styles.leadingVisual}>{leadingVisual}</span>
